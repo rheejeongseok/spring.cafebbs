@@ -1,0 +1,261 @@
+.content_wrap{
+	position: relative;
+}
+.info_wrap{
+	width:80%;
+	margin:0 auto;
+	min-width: 1100px;
+}
+.info_t{
+	width:100%;
+	height:50px;
+	position: relative;
+	background-color:#bfdfe0;
+	text-align: left;
+	line-height: 50px;
+	margin-bottom:30px;
+}
+.info_t>div{
+	display: inline-block;
+}
+.info_t>em{
+	display: inline-block;
+	padding: 0 .3em;
+	color: white;
+	font-size: 110%;
+	font-style: normal;
+}
+.cafe_title{
+	font-size:16px;
+	margin-left: 16px;
+}
+.cafe_addr{
+	color: #5a5a5a;
+	font-size: 14px;
+}
+.cafe_grade{
+	vertical-align: middle;
+}
+.like_count{
+	font-size: 13px;
+}
+.info_l{
+	width:70%;
+	display:inline-block;
+	margin-left: -60px;
+}
+.cafe_category{
+	font-size: 0;
+}
+.cafe_category li{
+	display: inline-block;
+	font-size: 20px;
+	width:33.33333%;
+	height: 65px;
+	line-height: 65px;
+	border: 1px #7c7c7d solid;
+}
+.cafe_category .infomation{
+	border-left:none;
+	border-right:none;
+}
+.cafe_category li a{
+	font-size: 20px;
+	display: block;
+	height: 99.7%;
+}
+.cafe_category li a.on{
+	border-bottom: 8px #bfdfe0 solid;
+}
+
+.menu_list_detail{
+	width:100%;
+	display: none;
+}
+
+.menu_title{
+	width:100%;
+	text-align: left;
+	padding-left: 20px;
+	height: 50px;
+	line-height: 50px;
+	background:url("../img/menu_arrow.png") no-repeat;
+	background-size: 10px 10px;
+	background-position: 700px;
+	background-color: #424242;
+	color: #e6e6e6;
+
+
+
+}
+.menus li{
+	height: 60px;
+	border: 1px #dedede solid;
+	position: relative;
+}
+.food_title{
+	position: absolute;
+	left: 20px;
+	top: 10px;
+}
+.food_price{
+	position: absolute;
+	right: 15px;
+	top: 10px;
+}
+
+.food_desc{
+	position: absolute;
+	left: 20px;
+	top: 27px;
+	font-size: 12px;
+}
+
+.infomation_detail{
+	display:none;
+	border-left: 1px #7c7c7d solid;
+	border-right: 1px #7c7c7d solid;
+	border-bottom: 1px #7c7c7d solid;
+
+}
+.infomation_detail>div{
+	width:100%;
+	padding: 0 20px 20px;
+	text-align: left;
+}
+.cafe_info{
+	padding-top: 30px !important;
+}
+.business_info{}
+.cafe_description{}
+.info_subtitle{
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px #7c7c7d solid;
+	margin-bottom: 10px;
+	padding-left: 30px;
+	font-weight: bold;
+	background:url("../img/info_check.png") no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px 18px;
+}
+.info_description{
+	padding-left: 20px;
+}
+.description_sub{
+	display: inline-block;
+	color: grey;
+font-size: 15px;
+
+}
+.description_text{
+	display: inline-block;
+	font-size: 15px;
+}
+
+.cafe_event{
+	height: 200px;
+	background: #d0dbdb;
+	line-height: 200px;
+	text-align: center !important;
+	border-top: 1px grey solid;
+}
+
+.review_list_detail{
+	display:block;
+	border-left: 1px #7c7c7d solid;
+	border-right: 1px #7c7c7d solid;
+	border-bottom: 1px #7c7c7d solid;
+	padding-top:30px;
+}
+
+.comment_write{
+	text-align: left;
+	padding-bottom: 20px;
+	border-bottom: 1px #cec5c5 solid;
+}
+.write_writer{
+	display: inline-block;
+	margin-left:20px;
+}
+.write_time{
+	display: inline-block;
+	color: #9c9c9c;
+font-size: 14px;
+
+}
+.write_grade{
+	display: inline-block !important;
+}
+.write_content{
+	padding-left: 20px;
+	padding-top: 10px;
+}
+.write_content textarea {
+	width:80%;
+}
+
+#submitBtn{
+	width: 86px;
+	height: 63px;
+	vertical-align: top;
+	margin-left: 20px;
+}
+
+.comment_list{
+	margin-top: 30px;
+	text-align: left;
+
+}
+.comment_view{}
+.list_writer{
+	display:inline-block;
+}
+.list_time{
+	display:inline-block;
+	color: #9c9c9c;
+font-size: 14px;
+
+}
+.list_grade{
+	display:inline-block !important;
+}
+.list_content{}
+.info_r{
+	width:24%;
+	float:right;
+	border: 1px #7c7c7d solid;
+	padding: 10px;
+
+
+}
+
+.simple_title{
+	text-align: left;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 10px;
+	border-bottom: 2px #d2caca solid;
+	padding-left: 10px;
+	font-weight: bold;
+	font-size: 14px;
+
+}
+.simple_simple{
+
+}
+.simple_simple li{
+	text-align: left;
+	font-size: 13px;
+	padding: 5px;
+
+}
+.simple_category{
+
+}
+.simple_explain{
+
+}
+.footer{
+	clear:both;
+}

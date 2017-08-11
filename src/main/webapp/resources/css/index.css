@@ -1,0 +1,176 @@
+.content .cafediv{
+	width:24%;
+	display:inline-block;
+	height:250px;
+	min-width:200px;
+	max-width:290px;
+	border:1px #c7c7c7 solid;
+	margin-bottom:20px;
+	text-align: left;
+}
+.cafediv .cafe_title{
+	font-size: 19px;
+	display: inline-block;
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+.cafediv .cafe_sub{
+	font-size: 15px;
+    color: grey;
+    margin-left: 20px;
+    margin-top: 5px;
+    display: inline-block;
+}
+.cafe01 {
+	background:url("../img/asdf/all_cafe.png") no-repeat;
+	background-position: 167px 74px;
+    background-size: 120px 170px;
+
+}
+.cafe02 {
+	background:url("../img/asdf/dog.png") no-repeat;
+	background-position: 142px 76px;
+    background-size: 180px 182px;
+	    background-color: #bfdfe0;
+}
+.cafe03 {
+
+    	background:url("../img/asdf/homibing.png") no-repeat;
+background-position: 139px 138px;
+    background-size: 138px 100px;
+}
+.cafe04 {
+	background:url("../img/asdf/dogcat.png") no-repeat;
+	    background-position: 124px 119px;
+    background-size: 185px 130px;
+	background-color: #bfdfe0;
+}
+.cafe05 {
+	background:url("../img/asdf/pat.png") no-repeat;
+background-position: 151px 74px;
+    background-size: 170px 175px;
+
+}
+.cafe06 {
+	background:url("../img/asdf/seolbing.png") no-repeat;
+background-position: 113px 98px;
+    background-size: 160px 142px;
+	background-color: #bfdfe0;
+}
+.cafe07 {
+	background:url("../img/asdf/seolbing.png") no-repeat;
+background-position: 113px 98px;
+    background-size: 160px 142px;
+
+}
+.cafe08 {
+	background:url("../img/bingsoo.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
+	background-color: #bfdfe0;
+}
+
+.ranking {
+	width:45%;
+	min-width:480px;
+	max-width:587px;
+	height:40px;
+	outline:1px black solid;
+	display:inline-block;
+	margin-top:30px;
+}
+.ranking>div {
+	float:left;
+}
+.ranking .slidename{
+	width:30%;
+	height:100%;
+	background-color:red;
+}
+.ranking .ranking_slide{
+	width:70%;
+	height:100%;
+	background-color:blue;
+	position: relative;
+}
+.ranking .ranking_slide li{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+.ranking .ranking_slide li>span{
+	height:100%;
+	float:left;
+}
+.cafepoint{
+	float:right !important;
+}
+.ranking .ranking_slide ul{
+	width:100%;
+}
+.ranking_slide .cafename{
+	width:80%;
+	height:100%;
+	background-color:green;
+}
+.ranking_slide .cafepoint{
+	width:20%;
+	height:100%;
+	background-color:black;
+}
+
+.nowreview{
+	width:45%;
+	min-width:480px;
+	max-width:587px;
+	height:40px;
+	outline:1px black solid;
+	display:inline-block;
+	vertical-align: top;
+	margin-top: 30px;
+}
+
+.nowreview>div {
+	float:left;
+}
+.nowreview .slidename{
+	width:30%;
+	height:100%;
+	background-color:red;
+}
+.nowreview .reivew_ranking{
+	width:70%;
+	height:100%;
+	background-color:blue;
+	position: relative;
+}
+.nowreview .reivew_ranking li{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+.nowreview .reivew_ranking li>span{
+	height:100%;
+	float:left;
+}
+.comment_writer{
+	float:right !important;
+}
+.nowreview .reivew_ranking ul{
+	width:100%;
+}
+.reivew_ranking .comment_content{
+	width:80%;
+	height:100%;
+	background-color:green;
+}
+.reivew_ranking .comment_writer{
+	width:20%;
+	height:100%;
+	background-color:black;
+}

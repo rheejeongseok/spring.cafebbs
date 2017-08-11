@@ -1,0 +1,83 @@
+.content_wrap{
+    min-width: 1300px !important;
+}
+.cafe_type{
+    text-align: left;
+    padding-left:18px;
+    position: relative;
+}
+.cafe_type ul{
+    font-size: 0;
+    display: inline-block;
+    width:380px;
+}
+.cafe_type li{
+    text-align: center;
+    font-size: 16px;
+    display: inline-block;
+    width:80px;
+    height:80px;
+    line-height: 80px;
+    margin-right:10px;
+    margin-top:-25px;
+    margin-bottom:10px;
+
+}
+.cafe_type li:hover{
+
+}
+.cafe_type li a:hover{
+
+}
+.cafe_type .line{
+    height: 4px;
+    width: 70%;
+    margin-right:20px;
+    background-color: #bfdfe0;
+    position: absolute;
+    right:0;
+    top:0;
+    margin-top: 15px;
+}
+.cafelist{
+    width:32%;
+    height:120px;
+    outline: 1px grey solid;
+    display: inline-block;
+    min-width:420px;
+    padding:10px;
+    background-color:#e9e9e9;
+
+}
+.cafelist>div{
+    text-align: left;
+    float:left;
+}
+.list_l{
+    margin-left:20px;
+}
+.list_l img{
+    width:100px;
+}
+.list_r{
+    margin-left:15px;
+}
+.list_title{
+    font-size: 20px;
+    font-weight:bold;
+}
+.reviews{
+    display: inline-block;
+    font-size:14px;
+}
+.cafe_info{
+    font-size:15px;
+    color:grey;
+}
+#grade{
+    display: inline-block;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+}

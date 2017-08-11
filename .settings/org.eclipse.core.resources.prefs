@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/WEB-INF/views/cafe/cafeinfo.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/cafelist.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/findpwd.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/header.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/index.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/join.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/login.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/pwdmodify.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/cafe/usermodify.jsp=UTF-8

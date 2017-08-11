@@ -1,0 +1,56 @@
+
+.loginform{
+    width:410px;
+    margin:0 auto;
+    text-align: left;
+    outline:1px black solid;
+    padding:30px;
+}
+.loginform input[type="text"],
+.loginform input[type="password"]{
+    width:240px;
+    padding-left:10px;
+    height:35px;
+    background-color:#bfdfe0;
+    border:none;
+}
+.loginform td{
+    padding:10px 0;
+}
+.loginform tr:last-child td{
+    border:none;
+    text-align: center;
+
+}
+#submitBtn{
+    width:240px;
+    height:35px;
+    vertical-align: middle;
+    border:none;
+    background-color: #2f2f2f;
+    color: white;
+}
+#joinBtn{
+    width:240px;
+    height:35px;
+    vertical-align: middle;
+    border:none;
+    background-color: #bfbfbf;
+    color: black;
+}
+.loginform .description{
+    font-size:12px;
+}
+
+.find_member {
+    text-align: right;
+}
+
+div[class^=find] a{
+    font-size: 14px;
+    color:grey;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+}

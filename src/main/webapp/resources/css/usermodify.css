@@ -1,0 +1,66 @@
+.modifytitle{
+    width: 800px;
+    text-align: left;
+    margin: 0 auto;
+    padding-bottom: 11px;
+    font-size: 20px;
+}
+.line{
+	height: 4px;
+    width: 635px;
+    background-color: #bfdfe0;
+    float: right;
+    margin-top: 15px;
+}
+
+.modifyform{
+	width:800px;
+	margin:0 auto;
+	text-align: left;
+	outline:1px black solid;
+	padding:30px;
+}
+.modifyform input[type="text"],
+.modifyform input[type="password"]{
+	width:240px;
+	padding-left:10px;
+	height:35px;
+	background-color:#bfdfe0;
+	border:none;
+}
+.modifyform .addrtext{
+	width:200px !important;
+}
+
+#checkEmail, #checkNick{
+	width:70px;
+	height:35px;
+	vertical-align: middle;
+	border:none;
+}
+
+#findaddr{
+	width:100px;
+	height:35px;
+	vertical-align: middle;
+	border:none;
+}
+
+.modifyform td{
+	padding:10px 0;
+	border-bottom: 1px #bfb9b9 solid;
+}
+.modifyform tr:last-child td{
+	border:none;
+	text-align: center;
+	padding-top:20px;
+}
+#submitBtn{
+	width:100px;
+	height:35px;
+	vertical-align: middle;
+	border:none;
+}
+.modifyform .description{
+	font-size:12px;
+}
