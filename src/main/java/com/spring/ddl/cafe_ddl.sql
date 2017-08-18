@@ -47,7 +47,7 @@ CREATE TABLE `tb_cafe_review` (
 	`commentno` INT(11) NOT NULL AUTO_INCREMENT,
 	`usernickname` VARCHAR(30) NOT NULL,
 	`cafeno` INT(11) NULL DEFAULT NULL,
-	`content` VARCHAR(40) NOT NULL,
+	`content` VARCHAR(9999) NOT NULL,
 	`grade` DOUBLE NOT NULL,
 	`regdate` DATETIME NULL DEFAULT NULL,
 	`updateDate` DATETIME NULL DEFAULT NULL,

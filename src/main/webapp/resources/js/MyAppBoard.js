@@ -86,7 +86,7 @@ var commentadd = function commentadd(cafeno, content,grade) {
         // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.    	
     	if(data != null ){
         	
-    			$('.comment_list').prepend('<div class="comment_view'+data.num+' commentno='+data.num+'"></div>');
+    			$('.comment_list').prepend('<div class="comment_view'+data.num+'" commentno='+data.num+'></div>');
     			$('.comment_view'+data.num+'').append('<div class="btns'+data.num+'"></div>');
     			$('.btns'+data.num+'').append('<button class="modifyBtn" commetno="'+data.num+'">수정</button> <button class="deleteBtn" commetno="'+data.num+'">삭제</button>');
                 $('.comment_view'+data.num+'').append('<div class="list_writer'+data.num+'">'+data.usernickname+'</div><div class="list_time'+data.num+'">'+data.time+'</div><div class="gradeScore'+data.num+'" style="display:none;">'+data.grade+'</div><div class="list_grade'+data.num+'"></div><div class="modifyBtns'+data.num+'"></div>');
@@ -130,7 +130,7 @@ var commentupdate = function commentupdate(commentno,content,cafeno) {
         // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.
         if(data == 1 || data == 0){
             $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').children('textarea').remove();
-            $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').text(textarea);
+            $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').text(textarea).replace(/\n/g, "<br>");
         }
         else {
             alert( '댓글 수정 실패');

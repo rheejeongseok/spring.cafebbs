@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,13 +78,13 @@
              if($(this).is('.modifyon')){
                 
                 $(this).removeClass('modifyon');
-                var commentno = $(this).parents('div[class^="list_content"]').attr('commentno');
-                var content = $(this).parents('div[class^="list_content"]').find('div[class^="content_text"] textarea').val();
+                var commentno = $(this).parents('div[class^="comment_view"]').attr('commentno');
+                var content = $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"] textarea').val().replace(/\n/g, "<br>");
                 var cafeno = $(".comment_list").attr('cafeno');
                 console.log(commentno);
                 console.log(content);
                 
-                return commentupdate(commentno,content,);
+                return commentupdate(commentno,content,cafeno);
                 
                 
             }
@@ -92,10 +92,10 @@
             	   
             	
                 $(this).addClass('modifyon');   
-                var content_val = $(this).parents('div[class^="list_content"]').find('div[class^="content_text"]').text();
+                var content_val = $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').text();
                 console.log(content_val);
-                $(this).parents('div[class^="list_content"]').find('div[class^="content_text"]').text("");
-                $(this).parents('div[class^="list_content"]').find('div[class^="content_text"]').append('<textarea name="comtent">'+content_val+'</textarea>')
+                $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').text("");
+                $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').append('<textarea name="comtent" style="width:100%; padding-bottom:20px;">'+content_val+'</textarea>')
                 
                 return false;
             }
