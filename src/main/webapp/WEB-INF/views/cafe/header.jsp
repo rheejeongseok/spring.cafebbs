@@ -18,7 +18,9 @@
         </c:choose>
 	</div>
 	<div class="logo">
-		<img src="/resources/img/logo.png">
+        <a href="/">
+		  <img src="/resources/img/logo.png">
+        </a>
 	</div>
 	<div class="searchbox">
 		<img src="/resources/img/써치.png" class="search">
