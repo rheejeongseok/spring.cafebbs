@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/pwdmodify.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/pwdmodify.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+	<script type="text/javascript" src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/common.js"></script>
 </head>
 <body>
 	<div class="wrap">

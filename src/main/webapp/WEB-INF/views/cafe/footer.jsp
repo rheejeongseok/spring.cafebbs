@@ -1,6 +1,6 @@
 <div class="footer_wrap">
 	<div class="footer_l">
-		<img src="img/logo.png">
+		<img src="/resources/img/logo.png">
 	</div>
 	<div class="footer_r">
 		<div class="company-info">

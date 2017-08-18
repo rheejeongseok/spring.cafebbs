@@ -62,6 +62,9 @@
 .list_r{
     margin-left:15px;
 }
+.gradeScore{
+    display:none;
+}
 .list_title{
     font-size: 20px;
     font-weight:bold;

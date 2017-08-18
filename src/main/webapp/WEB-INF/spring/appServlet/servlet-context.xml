@@ -90,7 +90,6 @@
         <aop:advisor pointcut-ref="controllerTx"  advice-ref="txAdvice"  />
     </aop:config>
     
-
     <!-- Transaction 대상 설정 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>

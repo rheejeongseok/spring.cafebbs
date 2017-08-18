@@ -23,45 +23,44 @@
     display: inline-block;
 }
 .cafe01 {
-	background:url("../img/asdf/all_cafe.png") no-repeat;
-	background-position: 167px 74px;
-    background-size: 120px 170px;
+	background:url("../img/viewall.png") no-repeat;
+	background-position: 90px 52px;
+	background-size: 200px 200px;
 
 }
 .cafe02 {
-	background:url("../img/asdf/dog.png") no-repeat;
-	background-position: 142px 76px;
-    background-size: 180px 182px;
+	background:url("../img/hollys.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
 	    background-color: #bfdfe0;
 }
 .cafe03 {
-
-    	background:url("../img/asdf/homibing.png") no-repeat;
-background-position: 139px 138px;
-    background-size: 138px 100px;
+	background:url("../img/starbucks.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
 }
 .cafe04 {
-	background:url("../img/asdf/dogcat.png") no-repeat;
-	    background-position: 124px 119px;
-    background-size: 185px 130px;
+	background:url("../img/ediya.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
 	background-color: #bfdfe0;
 }
 .cafe05 {
-	background:url("../img/asdf/pat.png") no-repeat;
-background-position: 151px 74px;
-    background-size: 170px 175px;
+	background:url("../img/bingsoo.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
 
 }
 .cafe06 {
-	background:url("../img/asdf/seolbing.png") no-repeat;
-background-position: 113px 98px;
-    background-size: 160px 142px;
+	background:url("../img/coffeebean.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
 	background-color: #bfdfe0;
 }
 .cafe07 {
-	background:url("../img/asdf/seolbing.png") no-repeat;
-background-position: 113px 98px;
-    background-size: 160px 142px;
+	background:url("../img/personcafe.png") no-repeat;
+	background-position: 130px 85px;
+	background-size: 200px 200px;
 
 }
 .cafe08 {
