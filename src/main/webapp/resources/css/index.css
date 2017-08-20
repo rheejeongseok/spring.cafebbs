@@ -7,6 +7,7 @@
 	border:1px #c7c7c7 solid;
 	margin-bottom:20px;
 	text-align: left;
+	cursor:pointer;
 }
 .cafediv .cafe_title{
 	font-size: 19px;
@@ -75,7 +76,6 @@
 	min-width:480px;
 	max-width:587px;
 	height:40px;
-	outline:1px black solid;
 	display:inline-block;
 	margin-top:30px;
 }
@@ -85,24 +85,22 @@
 .ranking .slidename{
 	width:30%;
 	height:100%;
-	background-color:red;
+	background-color: #e2dbdb;
+    line-height: 40px;
 }
 .ranking .ranking_slide{
 	width:70%;
 	height:100%;
-	background-color:blue;
 	position: relative;
 }
 .ranking .ranking_slide li{
-	position: absolute;
-	top:0;
-	left:0;
 	width:100%;
-	height:100%;
+	height: 40px;
+    line-height: 40px;
 }
 .ranking .ranking_slide li>span{
 	height:100%;
-	float:left;
+	display:inline-block;
 }
 .cafepoint{
 	float:right !important;
@@ -113,12 +111,12 @@
 .ranking_slide .cafename{
 	width:80%;
 	height:100%;
-	background-color:green;
+	background-color:#f9f9f9;
 }
 .ranking_slide .cafepoint{
 	width:20%;
 	height:100%;
-	background-color:black;
+	background-color:#bfdfe0;
 }
 
 .nowreview{
@@ -126,7 +124,6 @@
 	min-width:480px;
 	max-width:587px;
 	height:40px;
-	outline:1px black solid;
 	display:inline-block;
 	vertical-align: top;
 	margin-top: 30px;
@@ -138,24 +135,23 @@
 .nowreview .slidename{
 	width:30%;
 	height:100%;
-	background-color:red;
+	background-color:#e2dbdb;
+	line-height: 40px;
 }
 .nowreview .reivew_ranking{
 	width:70%;
 	height:100%;
-	background-color:blue;
 	position: relative;
 }
 .nowreview .reivew_ranking li{
-	position: absolute;
-	top:0;
-	left:0;
 	width:100%;
-	height:100%;
+	height: 40px;
+    line-height: 40px;
+    overflow:hidden;
 }
 .nowreview .reivew_ranking li>span{
 	height:100%;
-	float:left;
+	display:inline-block;
 }
 .comment_writer{
 	float:right !important;
@@ -166,10 +162,10 @@
 .reivew_ranking .comment_content{
 	width:80%;
 	height:100%;
-	background-color:green;
+	background-color:#f9f9f9;
 }
 .reivew_ranking .comment_writer{
 	width:20%;
 	height:100%;
-	background-color:black;
+	background-color:#bfdfe0;
 }

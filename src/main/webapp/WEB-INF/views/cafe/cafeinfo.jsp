@@ -68,6 +68,9 @@
              console.log("content"+content);
              console.log("cafeno"+cafeno);
              console.log("grade"+grade);
+             if(grade == null || grade == ""){
+            	 alert("평점을 입력해주세요")
+             }
              return commentadd(cafeno,content,grade);
          })
          
@@ -92,16 +95,25 @@
             	   
             	
                 $(this).addClass('modifyon');   
-                var content_val = $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').text();
+                var content_val = $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').html();
+                var replace = content_val.replace(/<br>/g,"\n");
                 console.log(content_val);
-                $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').text("");
-                $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').append('<textarea name="comtent" style="width:100%; padding-bottom:20px;">'+content_val+'</textarea>')
+                 $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').text("");
+                $(this).parents('div[class^="comment_view"]').find('div[class^="content_text"]').append('<textarea name="comtent" style="width:100%; padding-bottom:20px;">'+replace+'</textarea>')
                 
                 return false;
             }
         
         }) 
          
+        $("body").on('click','.deleteBtn',function(){
+        	
+        	var commentno = $(this).parents('div[class^=comment_view]').attr('commentno')
+        	console.log(commentno)
+        	
+        	return commentdelete(commentno);
+        	
+        })
             
 		});
 	</script>

@@ -15,9 +15,9 @@
     <!-- 카페랭킹 잘모르것다 join 했을때임-->
     <!-- getCafeOne,getCafeGrade 구해서 하면됨 밑에 껀 혹시나해서 join이라 잘모름;-->
     <select id="getCafeRanking" resultType="ModelCafe">        
-        SELECT ci.cafename, avg(grade) avgG 
-        from tb_cafe_review cr join tb_cafe_cafeinfo ci on cr.cafeno = ci.cafeno
-        group by cr.cafeno order by avgG desc limit 5
+        select * from 
+        tb_cafe_cafeinfo 
+        order by avg_grade desc limit 5
     </select>
     
     <!-- 로그인 -->
@@ -85,7 +85,7 @@
                 </if>
             ORDER BY userno
     </select>
-    
+   
     <!-- 카페 대분류로 가져올때(리스트로 가져와야함) -->
     <select id="getCafeBigTypeList" parameterType="string" resultType="ModelCafe">        
         SELECT *
@@ -146,6 +146,34 @@
          WHERE cafeno = #{cafeno} 
          and commentno = #{commentno}
     </select>
+     
+    <!-- 카페 마지막 가져고이 -->
+    <select id="getMaxCafe" parameterType="String" resultType="int">        
+        SELECT max(cafeno)
+          FROM tb_cafe_cafeinfo
+          WHERE  brand = #{brand}
+    </select>
+    
+    <!-- 카페 마지막 가져고이 -->
+    <select id="getMaxCafeAll" resultType="int">        
+        SELECT max(cafeno)
+          FROM tb_cafe_cafeinfo
+    </select>
+    
+     <!-- 카페 퍼스트 가져고이 -->
+    <select id="getMinCafe" resultType="int">        
+        SELECT min(cafeno)
+          FROM tb_cafe_cafeinfo
+    </select>
+    
+    <!-- 리뷰랑 라이크 평점 한번에 업데이트 -->
+    <update id="cafeAllUpdate" parameterType="int">
+            UPDATE tb_cafe_user 
+               SET like_count = (select count(cafeno) from tb_cafe_like where cafeno = #{cafeno})
+                   ,review_count= (select count(cafeno) from tb_cafe_review where cafeno = #{cafeno})
+                   ,avg_grade = (select avg(grade) from tb_cafe_review where cafeno = #{cafeno})
+            WHERE cafeno = #{cafeno}            
+    </update>
     
     <!-- 카페 평점 구하기 -->
     <select id="getCafeGrade" parameterType="int" resultType="double">        

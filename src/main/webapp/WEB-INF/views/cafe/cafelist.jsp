@@ -56,6 +56,25 @@
 				
 			})
 			
+			$('.moreBtn').click(function(){
+				
+				var lastcafeno = $('div[class^=cafelist]').last().attr('cafeno')
+				console.log(lastcafeno)
+				var brand = null;
+				var abcd = $('.maxcafe').attr('brand');
+				console.log("abcd"+abcd)
+				if(abcd != null || abcd != ""){
+					brand = abcd;
+				}
+				else{
+					brand = null;
+				}
+				console.log(brand)
+				
+				return morecafelist(lastcafeno,brand);
+				
+			})
+			
 		});
 	</script>
     <style>
@@ -76,8 +95,8 @@
 					</ul>
 					<div class="line"></div>
 				</div>
-
-                <c:forEach var="list" items="${cafelist }" varStatus="status">
+				<div class="maxcafe" brand="${brand }" maxcafe="${maxCafe }" style="display:hidden;"></div>
+                <c:forEach var="list" items="${cafelist }"  end="11" varStatus="status">
     				<div class="cafelist" index="${status.index }" cafeno="${list.cafeno }" brand="${list.brand }">
     					<div class="list_l">
                             <c:choose>
@@ -113,10 +132,8 @@
     					</div>
     				</div>
                 </c:forEach>
-
-
+				<div class="moreBtn">더 보기</div>
 			</div>
-
 		</div>
 		<div class="footer"><%@ include file="footer.jsp" %></div>
 	</div>

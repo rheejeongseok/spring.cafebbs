@@ -12,6 +12,7 @@ import com.spring.model.ModelReview;
 public interface IDaoCafe {
     
     List<ModelReview> getNewReview();
+    List<ModelCafe> getCafeRanking();
     List<ModelCafe> getCafeBigTypeList(String cafebigtype);
     ModelCafe getCafeOne(int cafeno);
     List<ModelCafe> getCafeBrandList(String cafebigtype, String brand);
@@ -19,6 +20,8 @@ public interface IDaoCafe {
     List<ModelMenu> getMenuSub(String brand);
     List<ModelReview> getReviewList(int cafeno);
     ModelReview getReviewOne(int cafeno, int commentno);
+    int getMaxCafe(String brand);
+    int getMaxCafeAll();
     Double getCafeGrade(int cafeno);
     int getReviewCount(int cafeno);
     int getLikeCount(int cafeno);

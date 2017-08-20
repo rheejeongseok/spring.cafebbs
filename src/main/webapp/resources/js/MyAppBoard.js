@@ -118,7 +118,7 @@ var commentadd = function commentadd(cafeno, content,grade) {
 }
 
 var commentupdate = function commentupdate(commentno,content,cafeno) {
-    var textarea = $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"] textarea').val();
+    var textarea = $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"] textarea').val().replace(/\n/g, "<br>");
     
     $.ajax({
         url : '/commentupdate',
@@ -129,8 +129,9 @@ var commentupdate = function commentupdate(commentno,content,cafeno) {
     }).done( function(data, textStatus, xhr ){
         // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.
         if(data == 1 || data == 0){
+        	var repT = $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"] textarea').val().replace(/\n/g, "<br>");
             $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').children('textarea').remove();
-            $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').text(textarea).replace(/\n/g, "<br>");
+            $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').html(repT);
         }
         else {
             alert( '댓글 수정 실패');
@@ -146,7 +147,7 @@ var commentdelete = function commentdelete(commentno) {
 
         $.ajax({
             url : '/commentdelete',
-            data: { 'commentno': commentno },   // 사용하는 경우에는 { data1:'test1', data2:'test2' }
+            data: { 'commentnoo': commentno },   // 사용하는 경우에는 { data1:'test1', data2:'test2' }
             type: 'post',       // get, post
             timeout: 30000,    // 30초
             dataType: 'json',  // text, html, xml, json, jsonp, script
@@ -162,4 +163,26 @@ var commentdelete = function commentdelete(commentno) {
         
         return false;
     }
+}
+
+var morecafelist = function morecafelist(lastcafeno,brand) {
+    
+    $.ajax({
+        url : '/morecafe',
+        data: { 'lastcafeno': lastcafeno, 'brand':brand},   // 사용하는 경우에는 { data1:'test1', data2:'test2' }
+        type: 'post',       // get, post
+        timeout: 30000,     // 30초
+        dataType: 'html',   // text, html, xml, json, jsonp, script
+    }).done( function(data, textStatus, xhr ){
+        // 통신이 성공적으로 이루어졌을 때 이 함수를 타게 된다.
+        if(data == 1 || data == 0){
+            $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').children('textarea').remove();
+            $('div[commentno^="' + commentno + '"]').find('div[class^="content_text"]').text(textarea).replace(/\n/g, "<br>");
+        }
+        else {
+            alert( '댓글 수정 실패');
+        }
+    });
+    
+    return false;
 }

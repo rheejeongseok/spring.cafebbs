@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.spring.common.WebConstants;
 import com.spring.model.ModelCafe;
 import com.spring.model.ModelMenu;
@@ -50,6 +51,11 @@ public class WCafeController {
 	public String index(Locale locale, Model model) {
 		logger.info("index");
 		
+		List<ModelCafe> ranking = svrcafe.getCafeRanking();
+		model.addAttribute("ranking",ranking);
+		
+		List<ModelReview> newR = svrcafe.getNewReview();
+		model.addAttribute("newR",newR);
 		
 		return "cafe/index";
 	}
@@ -70,7 +76,8 @@ public class WCafeController {
         }
         
         List<ModelCafe> cafe = svrcafe.getCafeBigTypeList(cafebigtype);
-        
+        int maxCafe = svrcafe.getMaxCafeAll();
+        model.addAttribute("maxCafe",maxCafe);
         model.addAttribute("cafelist",cafe);
         
         return "cafe/cafelist";
@@ -133,7 +140,8 @@ public class WCafeController {
         }
         
         List<ModelCafe> cafe = svrcafe.getCafeBrandList(cafebigtype, brand);
-        
+        int maxCafe = svrcafe.getMaxCafe(brand);
+        model.addAttribute("maxCafe",maxCafe);
         model.addAttribute("brand",brand);
         model.addAttribute("cafelist",cafe);
         
@@ -190,7 +198,6 @@ public class WCafeController {
         
         List<ModelMenu> menuMain = svrcafe.getMenuMain(brand);
         List<ModelMenu> menuSub = svrcafe.getMenuSub(brand);
-        
         List<ModelReview> reviews = svrcafe.getReviewList(cafeno);
         
         model.addAttribute("cafe",cafe);
@@ -260,6 +267,7 @@ public class WCafeController {
         
         ModelReview search = svrcafe.getReviewOne(cafeno, commentno);
         ModelReview update = new ModelReview();
+        
         update.setContent(content);
         int result = svrcafe.updateReview(update, search);
         
@@ -267,4 +275,20 @@ public class WCafeController {
            
 
     }
+	
+	@RequestMapping(value = "/commentdelete", method = RequestMethod.POST)
+    @ResponseBody
+    public int commentdelete(Model model
+            ,@RequestParam(value="commentnoo",defaultValue="-1") Integer commentno
+            ,HttpSession session
+            ) {
+       
+	    logger.info("commentdelete");
+	  
+	    int result = svrcafe.deleteReview(commentno);
+	    
+        return result;
+           
+
+	}
 }

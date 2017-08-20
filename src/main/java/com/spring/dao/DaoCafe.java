@@ -142,5 +142,23 @@ public class DaoCafe implements IDaoCafe {
         return session.selectOne("mapper.mysql.mapperCafe.getCommentno",review);
     }
 
+	@Override
+	public int getMaxCafe(String brand) {
+		// TODO Auto-generated method stub
+		return session.selectOne("mapper.mysql.mapperCafe.getMaxCafe",brand);
+	}
+
+	@Override
+	public List<ModelCafe> getCafeRanking() {
+		// TODO Auto-generated method stub
+		return session.selectList("mapper.mysql.mapperCafe.getCafeRanking");
+	}
+
+	@Override
+	public int getMaxCafeAll() {
+		// TODO Auto-generated method stub
+		return session.selectOne("mapper.mysql.mapperCafe.getMaxCafeAll");
+	}
+
    
 }

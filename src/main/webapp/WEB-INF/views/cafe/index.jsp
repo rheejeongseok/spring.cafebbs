@@ -11,9 +11,14 @@
 	<script type="text/javascript" src="/resources/js/common.js"></script>
     <script>
     $(function(){
-    	$('.cafe01').click(function(){
-    		window.location.href="/cafe/coffee";
+    	$('.cafediv').click(function(){
+    		
+    		var link = $(this).attr('link');
+    		window.location.href = link;
+    		
     	})
+    	
+    	
     })
     </script>
 </head>
@@ -22,64 +27,62 @@
 		<div class="header"><%@ include file="header.jsp" %></div>
 		<div class="content">
 			<div class="content_wrap">
-				<div class="cafe01 cafediv">
+				<div class="cafe01 cafediv" link="/cafe/coffee">
 					<span class="cafe_title">커퓌</span><br>
-					<span class="cafe_sub"><a href="/cafe/coffee">Coffee</a></span>
+					<span class="cafe_sub">Coffee</span>
 				</div>
-				<div class="cafe02 cafediv">
+				<div class="cafe02 cafediv" link="/cafe/coffee/hollys">
 					<span class="cafe_title">할리스</span><br>
-					<span class="cafe_sub"><a href="/cafe/coffee/hollys">Hollys</a></span>
+					<span class="cafe_sub">Hollys</span>
 				</div>
-				<div class="cafe03 cafediv">
+				<div class="cafe03 cafediv" link="/cafe/coffee/starbucks">
 					<span class="cafe_title">스타벅스</span><br>
-					<span class="cafe_sub"><a href="/cafe/coffee/starbucks">StarBucks</a></span>
+					<span class="cafe_sub">StarBucks</span>
 				</div>
-				<div class="cafe04 cafediv">
+				<div class="cafe04 cafediv" link="/cafe/coffee/ediya">
 					<span class="cafe_title">이디야</span><br>
-					<span class="cafe_sub"><a href="/cafe/coffee/ediya">Ediya</a></span>
+					<span class="cafe_sub">Ediya</span>
 				</div>
-				<div class="cafe05 cafediv">
+				<div class="cafe05 cafediv" link="/cafe/bingsoo">
 					<span class="cafe_title">빙수</span><br>
-					<span class="cafe_sub"><a href="/cafe/bingsoo">BingSoo</a></span>
+					<span class="cafe_sub">BingSoo</span>
 				</div>
-				<div class="cafe06 cafediv">
+				<div class="cafe06 cafediv" link="/cafe/bingsoo/homibing">
 					<span class="cafe_title">호미빙</span><br>
-					<span class="cafe_sub"><a href="/cafe/bingsoo/homibing">Coffee Bean</a></span>
+					<span class="cafe_sub">Coffee Bean</span>
 				</div>
-				<div class="cafe07 cafediv">
+				<div class="cafe07 cafediv" link="/cafe/bingsoo/seolbing">
 					<span class="cafe_title">설빙</span><br>
-					<span class="cafe_sub"><a href="/cafe/bingsoo/seolbing">Personal Cafe</a></span>
+					<span class="cafe_sub">Personal Cafe</span>
 				</div>
-				<div class="cafe08 cafediv">
+				<div class="cafe08 cafediv" link="/cafe/bingsoo/miltop">
 					<span class="cafe_title">밀탑빙수</span><br>
-					<span class="cafe_sub"><a href="/cafe/bingsoo/miltop">ice flakes with syrup</a></span>
+					<span class="cafe_sub">ice flakes with syrup</span>
 				</div>
-				<div class="cafe05 cafediv">
+				<div class="cafe05 cafediv" link="/cafe/animal">
 					<span class="cafe_title">동물카페</span><br>
-					<span class="cafe_sub"><a href="/cafe/animal">Animal Cafe</a></span>
+					<span class="cafe_sub">Animal Cafe</span>
 				</div>
-				<div class="cafe06 cafediv">
+				<div class="cafe06 cafediv" link="/cafe/animal/dog">
 					<span class="cafe_title">강아지</span><br>
-					<span class="cafe_sub"><a href="/cafe/animal/dog">Coffee Bean</a></span>
+					<span class="cafe_sub">Coffee Bean</span>
 				</div>
-				<div class="cafe07 cafediv">
+				<div class="cafe07 cafediv" link="/cafe/animal/cat">
 					<span class="cafe_title">고양이</span><br>
-					<span class="cafe_sub"><a href="/cafe/animal/cat">Personal Cafe</a></span>
+					<span class="cafe_sub">Personal Cafe</span>
 				</div>
-				<div class="cafe08 cafediv">
+				<div class="cafe08 cafediv" link="/cafe/animal/bird">
 					<span class="cafe_title">새</span><br>
-					<span class="cafe_sub"><a href="/cafe/animal/bird">ice flakes with syrup</a></span>
+					<span class="cafe_sub">ice flakes with syrup</span>
 				</div>
 				<div class="btm_slide">
 					<div class="ranking">
 						<div class="slidename">카페랭킹</div>
 						<div class="slide_list ranking_slide">
 							<ul>
-								<li><span class="cafename">a</span><span class="cafepoint">a</span></li>
-								<li><span class="cafename"></span><span class="cafepoint"></span></li>
-								<li><span class="cafename"></span><span class="cafepoint"></span></li>
-								<li><span class="cafename"></span><span class="cafepoint"></span></li>
-								<li><span class="cafename"></span><span class="cafepoint"></span></li>
+								<c:forEach var="list" items="${ranking }" varStatus="status">
+								<li><span class="cafename">${list.cafename }</span><span class="cafepoint">${status.index+1 }위</span></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>
@@ -87,11 +90,9 @@
 						<div class="slidename">실시간댓글</div>
 						<div class="slide_list reivew_ranking">
 							<ul>
-								<li><span class="comment_content"></span><span class="comment_writer"></span></li>
-								<li><span class="comment_content"></span><span class="comment_writer"></span></li>
-								<li><span class="comment_content"></span><span class="comment_writer"></span></li>
-								<li><span class="comment_content"></span><span class="comment_writer"></span></li>
-								<li><span class="comment_content"></span><span class="comment_writer"></span></li>
+								<c:forEach var="list" items="${newR }">
+								<li><span class="comment_content">${list.content }</span><span class="comment_writer">${list.usernickname }</span></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>

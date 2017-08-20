@@ -283,4 +283,40 @@ public class ServiceCafe implements IServiceCafe {
         }
         return result;
     }
+
+	@Override
+	public int getMaxCafe(String brand) {
+		int result = 0;
+		try {
+			result = daocafe.getMaxCafe(brand);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public List<ModelCafe> getCafeRanking() {
+		List<ModelCafe> result = null;
+		try {
+			result = daocafe.getCafeRanking();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public int getMaxCafeAll() {
+		int result = 0;
+		try {
+			result = daocafe.getMaxCafeAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

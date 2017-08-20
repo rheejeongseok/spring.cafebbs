@@ -831,3 +831,22 @@ INSERT INTO `tb_cafe_like` (`cafeno`, `userno`) VALUES ('22', '5');
 INSERT INTO `tb_cafe_like` (`cafeno`, `userno`) VALUES ('1', '6');
 INSERT INTO `tb_cafe_like` (`cafeno`, `userno`) VALUES ('1', '1');
 INSERT INTO `tb_cafe_like` (`cafeno`, `userno`) VALUES ('1', '2');
+
+--무조건 한번 실행 리뷰수 라이크수 평점 한번에 업데이트하는거라 무조건하셈
+--실행후 해당 데이터베이스 새로고침하면 update_loop라는 프로시져가 생김
+--그 프로시저 누른수 프로시저:update_loop라는 탭 누르고 밑에 루틴실행하면 됨
+delimiter $
+create procedure update_loop()
+begin
+select @minno := (select min(cafeno) from tb_cafe_cafeinfo)$
+select @maxno := (select max(cafeno) from tb_cafe_cafeinfo)$
+		while (@minno <= @maxno) DO
+	UPDATE tb_cafe_cafeinfo 
+   SET like_count = (select count(cafeno) from tb_cafe_like where cafeno = @minno)
+       ,review_count= (select count(cafeno) from tb_cafe_review where cafeno = @minno)
+       ,avg_grade = (select avg(grade) from tb_cafe_review where cafeno = @minno)
+		WHERE cafeno = @minno $
+		set @minno = @minno+1 $
+		end while$
+end $
+delimiter ;
