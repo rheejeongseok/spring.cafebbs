@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/usermodify.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/usermodify.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+	<script type="text/javascript" src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/common.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -85,15 +85,6 @@
 								<input type="text" id="roadAddress" class="addrtext" placeholder="도로명주소">
 								<input type="text" id="jibunAddress" class="addrtext" placeholder="지번주소">
 								<span id="guide" style="color:#999"></span>
-							</td>
-						</tr>
-						<tr>
-							<td>성별</td>
-							<td>
-								<select>
-									<option>남자</option>
-									<option>여자</option>
-								</select>
 							</td>
 						</tr>
 						<tr>

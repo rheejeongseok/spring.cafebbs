@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.mysql.mapperCafe">
+
+
+    <!-- 최신리뷰가져오기 -->
+    <select id="getNewReview" resultType="ModelReview">        
+        SELECT usernickname,content,regdate
+          FROM tb_cafe_review
+          order by regdate desc limit 5
+    </select>
+    
+    <!-- 카페랭킹 잘모르것다 join 했을때임-->
+    <!-- getCafeOne,getCafeGrade 구해서 하면됨 밑에 껀 혹시나해서 join이라 잘모름;-->
+    <select id="getCafeRanking" resultType="ModelCafe">        
+        SELECT ci.cafename, avg(grade) avgG 
+        from tb_cafe_review cr join tb_cafe_cafeinfo ci on cr.cafeno = ci.cafeno
+        group by cr.cafeno order by avgG desc limit 5
+    </select>
+    
+    <!-- 로그인 -->
+    <select id="login" parameterType="String" resultType="ModelUser">
+            select * 
+              from tb_cafe_user
+             WHERE email = #{email}
+              AND passwd = #{passwd}
+    </select>
+    
+    <!-- 회원가입 -->
+    <insert id="insertUser" parameterType="ModelUser">
+        INSERT INTO tb_cafe_user (`email`, `passwd`, `userphone`, `useraddr`, `sex`, `emailselect`, `usernickname`) 
+        VALUES (#{email}, #{passwd}, #{userphone}, #{useraddr}, #{sex}, #{emailselect}, #{usernickname}) 
+    </insert>
+    
+    <!-- 이메일 중복 확인 -->
+    <select id="checkemail" parameterType="string" resultType="int">
+            SELECT count(email)
+            FROM tb_cafe_user
+            where email = #{email}
+    </select>
+    
+    <!-- 닉네임중복확인 -->
+    <select id="checknickname" parameterType="string" resultType="int">
+            SELECT count(usernickname)
+            FROM tb_cafe_user
+            where usernickname = #{usernickname}
+    </select>
+    
+    <!-- 회원 가져오기 -->
+    <select id="selectUser" parameterType="int" resultType="ModelUser">
+             SELECT *
+             FROM tb_cafe_user
+             WHERE userno = #{userno}
+    </select>
+
+    <!-- 회원 정보 수정 -->
+    <update id="updateUser" parameterType="hashmap">
+            UPDATE tb_cafe_user 
+               SET userphone = #{update.userphone}
+                   ,useraddr = #{update.useraddr}
+            WHERE email = #{search.email}            
+    </update>
+
+    <!-- 회원탈퇴 -->
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM tb_cafe_user
+         WHERE email = #{email}
+    </delete>
+    
+    <!-- 회원뭉탱이로(리스트로가져와야함) -->
+    <select id="selectUserList" parameterType="ModelUser" resultType="ModelUser">
+            SELECT *
+            FROM tb_cafe_user
+            where 1=1
+                <if test= "email != null">
+                    AND (email like concat('%',#{email},'%'))
+                </if>
+                <if test= "usernickname != null">
+                    AND (usernickname like concat('%',#{usernickname},'%'))
+                </if>
+                <if test= "userphone != null">
+                    AND (userphone like concat('%',#{userphone},'%'))
+                </if>
+            ORDER BY userno
+    </select>
+    
+    <!-- 카페 대분류로 가져올때(리스트로 가져와야함) -->
+    <select id="getCafeBigTypeList" parameterType="string" resultType="ModelCafe">        
+        SELECT *
+          FROM tb_cafe_cafeinfo
+         WHERE cafebigtype = #{cafebigtype}
+    </select>
+    
+    <!-- 해당 카페만 가져올때 -->
+    <select id="getCafeOne" parameterType="int" resultType="ModelCafe"> 
+    SELECT *
+          FROM tb_cafe_cafeinfo
+         WHERE cafeno = #{cafeno}
+    </select>
+    
+    <!-- 카페 브랜드로 가져올때(리스트로가져와야함) -->
+     <select id="getCafeBrandList" parameterType="string" resultType="ModelCafe">        
+        SELECT *
+          FROM tb_cafe_cafeinfo
+         WHERE cafebigtype = #{cafebigtype}
+         and brand = #{brand}
+    </select>
+    
+    <!-- 메뉴 리스트 가져오기 join 했을때임 흠.;-->
+    <!-- <select id="getCafeMenu" parameterType="string" resultType="ModelMenu">        
+        select mk.menucd,m.menu_name,m.price,m.description 
+        from tb_cafe_menu m join tb_cafe_menu_kind mk on m.menuno = mk.menuno
+        where m.brand = #{brand};
+    </select> -->
+    
+    <!-- 메뉴 큰 메뉴 가져오기 (리스트로 가져오기)-->
+    <select id="getMenuMain" parameterType="string" resultType="ModelMenu">        
+        SELECT menucd
+          FROM tb_cafe_menu
+         WHERE brand = #{brand}
+         group by menucd
+         order by menu_id;
+    </select>
+    
+    <!-- 메뉴 소 메뉴 가져오기 (리스트로 가져오기)-->
+    <select id="getMenuSub" parameterType="string" resultType="ModelMenu">        
+        SELECT menucd, menu_name, price, description
+          FROM tb_cafe_menu
+         WHERE brand = #{brand}
+    </select>
+    
+    <!-- 해당 리뷰들 불러오기(리스트로 불러오기) -->
+    <select id="getReviewList" parameterType="int" resultType="ModelReview">        
+        SELECT *
+          FROM tb_cafe_review
+         WHERE cafeno = #{cafeno} 
+         order by commentno desc;
+    </select>
+    
+    <!-- 리뷰 하나 가져올때 -->
+    <select id="getReviewOne" parameterType="int" resultType="ModelReview">        
+        SELECT *
+          FROM tb_cafe_review
+         WHERE cafeno = #{cafeno} 
+         and commentno = #{commentno}
+    </select>
+    
+    <!-- 카페 평점 구하기 -->
+    <select id="getCafeGrade" parameterType="int" resultType="double">        
+        SELECT avg(grade),cafeno
+          FROM tb_cafe_review
+         WHERE cafeno = #{cafeno} 
+    </select>
+    
+    <!-- 카페 리뷰 갯수 구하기 -->
+    <select id="getReviewCount" parameterType="int" resultType="int">        
+        SELECT count(cafeno)
+          FROM tb_cafe_review
+         WHERE cafeno = #{cafeno} 
+    </select>
+    
+    <!-- 카페 즐찾 갯수 구하기 -->
+    <select id="getLikeCount" parameterType="int" resultType="int">        
+        SELECT count(cafeno)
+          FROM tb_cafe_like
+         WHERE cafeno = #{cafeno} 
+    </select>
+    
+    <!-- 카페 즐찾 증가 -->
+    <update id="increaseLike" parameterType="int">
+        UPDATE tb_cafe_cafeinfo 
+           SET like_count = (select count(cafeno) from tb_cafe_like where cafeno = #{cafeno})
+         WHERE cafeno=#{cafeno}
+    </update>
+    
+    <!-- 카페 리뷰수 증가 -->
+    <update id="increaseReview" parameterType="int">
+        UPDATE tb_cafe_cafeinfo 
+           SET review_count= (select count(cafeno) from tb_cafe_review where cafeno = #{cafeno})
+         WHERE cafeno=#{cafeno}
+    </update>
+    
+    <!-- 카페 평점 추가 및 증가 -->
+    <update id="increaseAvg" parameterType="int">
+        UPDATE tb_cafe_cafeinfo 
+           SET avg_grade = (select avg(grade) from tb_cafe_review where cafeno = #{cafeno}) 
+         WHERE cafeno=#{cafeno};
+    </update>
+    
+    <!-- 리뷰(댓글) 쓰기 -->
+    <insert id="insertReview" parameterType="ModelReview">
+        INSERT INTO tb_cafe_review (`usernickname`, `cafeno`, `content`, `grade`,`regdate`) 
+        VALUES (#{usernickname}, #{cafeno}, #{content}, #{grade},now())
+    </insert>
+    
+    <!-- 리뷰(댓글) commentno가져오기 -->
+    <select id="getCommentno" parameterType="ModelReview" resultType="int">        
+        SELECT commentno
+          FROM tb_cafe_review
+         WHERE cafeno = #{cafeno}
+         and content = #{content} 
+    </select>
+    
+    <!-- 리뷰(댓글) 수정 -->
+    <update id="updateReview" parameterType="hashmap">
+        UPDATE tb_cafe_review
+           SET content = #{update.content} 
+             , updateDate = now()
+         WHERE  1 = 1 
+              <if test="search.commentno != null and search.commentno != ''" >
+              AND commentno = #{search.commentno}
+              </if>
+              <if test="search.cafeno != null and search.cafeno != ''">
+              AND cafeno  = #{search.cafeno}
+              </if>
+    </update>
+    
+    <!-- 리뷰(댓글) 삭제 -->
+    <delete id="deleteReview" parameterType="int">
+        DELETE FROM tb_cafe_review
+        WHERE commentno = #{commentno}
+    </delete>
+
+ </mapper>
+
+ 
+ 

@@ -1,22 +1,67 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/cafelist.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.rateyo.min.css">
-	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
-	<script type="text/javascript" src="js/jquery.rateyo.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/cafelist.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/jquery.rateyo.min.css">
+	<script type="text/javascript" src="/resources/js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/common.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery.rateyo.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
-			$("#grade").rateYo({
-			    rating: 3.2,
-			    starWidth: "20px"
-			});
+			
+			var count = 0;
+			
+			$("div[id^=grade]").each(function(){
+				
+				var score = $('#grade'+count).prev('.gradeScore').text();
+				
+				$("#grade"+count).rateYo({
+					
+					rating: score,        
+	                starWidth: "20px",
+	                readOnly: true
+	            });
+				
+				count++
+				
+			})
+			
+			
+			$('.cafelist').click(function(){
+				
+				var brand = $(this).attr("brand");
+				if(brand == "스타벅스"){
+					brand = "starbucks";
+				}else if(brand == "할리스"){
+				    brand = "hollys";	
+				}else if(brand == "탐탐"){
+                    brand = "tomntom";   
+                }else if(brand == "이디야"){
+                    brand = "ediya";   
+                }else if(brand == "커피빈"){
+                    brand = "coffeebean";   
+                }else if(brand == "카페베네"){
+                    brand = "cafebene";   
+                }else if(brand == "개인카페"){
+                    brand = "personcafe";   
+                }
+				
+				var cafeno = $(this).attr("cafeno");
+				window.location.href = "/cafe1/"+brand+"/"+cafeno;
+				
+			})
+			
 		});
 	</script>
+    <style>
+    .cafelist {cursor:pointer}
+    
+    </style>
 </head>
 <body>
 	<div class="wrap">
@@ -25,78 +70,55 @@
 			<div class="content_wrap">
 				<div class="cafe_type">
 					<ul>
-						<li><a href="">커피</a></li>
-						<li><a href="">빙수</a></li>
-						<li><a href="">룸카페</a></li>
-						<li><a href="">동물카페</a></li>
+						<li><a href="/cafe/coffee">커피</a></li>
+						<li><a href="/cafe/bingsoo">빙수</a></li>
+						<li><a href="/cafe/animal">동물카페</a></li>
 					</ul>
 					<div class="line"></div>
 				</div>
-				<div class="cafelist">
-					<div class="list_l">
-						<img src="img/hollys.png">
-					</div>
-					<div class="list_r">
-						<div class="list_title">할리스_노원점</div>
-						<div id="grade"></div>
-						<div class="reviews">20건의 리뷰</div>
-						<div class="cafe_info">11:00~22:00 / 12,000원 이상 배달</div>
-					</div>
-				</div>
-				<div class="cafelist">
-					<div class="list_l">
-						<img src="img/starbucks.png">
-					</div>
-					<div class="list_r">
-						<div class="list_title">스타벅스_노원점</div>
-						<div class="reviews">33건의 리뷰</div>
-						<div class="cafe_info">11:00~24:00 / 5,000원 이상 배달</div>
-					</div>
-				</div>
-				<div class="cafelist">
-					<div class="list_l">
-						<img src="img/ediya.png">
-					</div>
-					<div class="list_r">
-						<div class="list_title">이디야_노원점</div>
-						<div class="reviews">66건의 리뷰</div>
-						<div class="cafe_info">11:00~22:00 / 아메리카노 존맛</div>
-					</div>
-				</div>
-				<div class="cafelist">
-					<div class="list_l">
-						<img src="img/tomntom.png">
-					</div>
-					<div class="list_r">
-						<div class="list_title">탐탐_노원점</div>
-						<div class="reviews">4건의 리뷰</div>
-						<div class="cafe_info">11:00~22:00 / 먹지마셈; 노맛</div>
-					</div>
-				</div>
-				<div class="cafelist">
-					<div class="list_l">
-						<img src="img/coffeebean.png">
-					</div>
-					<div class="list_r">
-						<div class="list_title">커피빈_노원점</div>
-						<div class="reviews">222건의 리뷰</div>
-						<div class="cafe_info">11:00~22:00 / 인기상품개쩜</div>
-					</div>
-				</div>
-				<div class="cafelist">
-					<div class="list_l">
-						<img src="img/bingsoo.png">
-					</div>
-					<div class="list_r">
-						<div class="list_title">빙수_노원점</div>
-						<div class="reviews">20건의 리뷰</div>
-						<div class="cafe_info">11:00~22:00 / 꼬우면 시발 뭐;</div>
-					</div>
-				</div>
+
+                <c:forEach var="list" items="${cafelist }" varStatus="status">
+    				<div class="cafelist" index="${status.index }" cafeno="${list.cafeno }" brand="${list.brand }">
+    					<div class="list_l">
+                            <c:choose>
+                                <c:when test="${list.brand == '스타벅스' }">
+                                    <img src="/resources/img/starbucks.png">
+                                </c:when>
+                                <c:when test="${list.brand == '할리스' }">
+                                    <img src="/resources/img/hollys.png">
+                                </c:when>
+                                <c:when test="${list.brand == '카페베네'}">
+                                    <img src="/resources/img/hollys.png">
+                                </c:when>
+                                <c:when test="${list.brand == '이디야' }">
+                                    <img src="/resources/img/ediya.png">
+                                </c:when>
+                                <c:when test="${list.brand == '탐탐' }">
+                                    <img src="/resources/img/tomntom.png">
+                                </c:when>
+                                <c:when test="${list.brand == '커피빈' }">
+                                    <img src="/resources/img/coffeebean.png">
+                                </c:when>
+                                <c:when test="${list.brand == '개인카페' }">
+                                    <img src="/resources/img/personcafe.png">
+                                </c:when>
+                            </c:choose>
+    					</div>
+    					<div class="list_r">
+    						<div class="list_title">${list.cafename }</div>
+                            <div class="gradeScore">${list.avg_grade }</div>
+    						<div id="grade${status.index }"></div>
+    						<div class="reviews">${list.review_count }건의 리뷰</div>
+    						<div class="cafe_info">${list.cafeaddr },${list.like_count }</div>
+    					</div>
+    				</div>
+                </c:forEach>
+
+
 			</div>
 
 		</div>
-		<div class="footer"></div>
+		<div class="footer"><%@ include file="footer.jsp" %></div>
 	</div>
 </body>
 </html>

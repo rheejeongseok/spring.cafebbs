@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/join.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/join.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+	<script type="text/javascript" src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/common.js"></script>
+    <script type="text/javascript" src="/resources/js/join.js"></script>
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -43,9 +44,23 @@
                 document.getElementById('roadAddress').value = fullRoadAddr;
                 document.getElementById('jibunAddress').value = data.jibunAddress;
 
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    //예상되는 도로명 주소에 조합형 주소를 추가한다.
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+
+                } else {
+                    document.getElementById('guide').innerHTML = '';
+                }
             }
         }).open();
     }
+    
 </script>
 </head>
 <body>
@@ -53,7 +68,7 @@
 		<div class="header"><%@ include file="header.jsp" %></div>
 		<div class="content">
 			<div class="content_wrap">
-				<form action="" method="post" enctype="">
+				<form action="/user/join" method="post" enctype="">
 					<div class="jointitle">카페로 회원가입 <div class="line"></div></div>
 					<table class="joinform">
 						<colgroup>
@@ -64,7 +79,7 @@
 							<td>이메일</td>
 							<td>
 								<input type="text" name="email"  placeholder="이메일을 입력해 주세요">
-								<input type="button" name="" id="checkEmail" value="중복확인"> <br>
+								<input type="button" id="checkEmail" value="중복확인"> <br>
 								<span class="description">
 									* 실제 사용중이신 이메일 주소를 등록하셔야 각종 정보를 수신하실 수 있습니다. <br>
 									* 회원정보 및 구매정보, 서비스 주요정책은 수신동의 여부와 관계없이 발송됩니다.
@@ -75,16 +90,16 @@
 							<td>닉네임 설정</td>
 							<td>
 								<input type="text" name="usernickname" placeholder="닉네임을 입력해 주세요">
-								<input type="button" name="" id="checkNick" value="중복확인">
+								<input type="button" id="checkNick" value="중복확인">
 							</td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input type="password" name="pwd" placeholder="비밀번호를 입력해 주세요"></td>
+							<td><input type="password" name="passwd" placeholder="비밀번호를 입력해 주세요"></td>
 						</tr>
 						<tr>
 							<td>비밀번호 확인</td>
-							<td><input type="password" name="pwdC" placeholder="비밀번호를 한번더 입력해 주세요"></td>
+							<td><input type="password" name="passwdC" placeholder="비밀번호를 한번더 입력해 주세요"></td>
 						</tr>
 						<tr>
 							<td>전화번호</td>
@@ -97,15 +112,14 @@
 								<input type="button" onclick="Postcode()" value="우편번호 찾기" id="findaddr"><br><br>
 								<input type="text" id="roadAddress" class="addrtext" placeholder="도로명주소">
 								<input type="text" id="jibunAddress" class="addrtext" placeholder="지번주소">
-								<span id="guide" style="color:#999"></span>
 							</td>
 						</tr>
 						<tr>
 							<td>성별</td>
 							<td>
-								<select>
-									<option>남자</option>
-									<option>여자</option>
+								<select name="sex">
+									<option value="남자">남자</option>
+									<option value="여자">여자</option>
 								</select>
 							</td>
 						</tr>

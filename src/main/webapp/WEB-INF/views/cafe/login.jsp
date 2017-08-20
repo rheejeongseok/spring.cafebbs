@@ -3,17 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css">
-	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
-	<script type="text/javascript" src="js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/login.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+	<script type="text/javascript" src="/resources/js/jquery-1.12.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/common.js"></script>
+    <script>
+    $(function(){
+    	$('#submitBtn').click(function(){
+    		$('form').submit();
+    		/* window.location.href="/"; */
+    	})
+    })
+    </script>
 </head>
 <body>
 	<div class="wrap">
 		<div class="header"><%@ include file="header.jsp" %></div>
 		<div class="content">
 			<div class="content_wrap">
-				<form action="" method="post" enctype="">
+				<form action="/user/login" method="post" enctype="">
 
 						<table class="loginform">
 						<colgroup>
@@ -23,12 +31,12 @@
 						<tr>
 							<td>이메일</td>
 							<td>
-								<input type="text" name="usernickname" placeholder="이메일을 입력해 주세요">
+								<input type="text" name="email" placeholder="이메일을 입력해 주세요">
 							</td>
 						</tr>
 						<tr>
 							<td>비밀번호</td>
-							<td><input type="password" name="pwd" placeholder="비밀번호를 입력해 주세요"></td>
+							<td><input type="password" name="passwd" placeholder="비밀번호를 입력해 주세요"></td>
 						</tr>
 						<tr>
 							<td colspan="2">
@@ -37,7 +45,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="button" id="submitBtn" value="로그인 완료"></td>
+							<td><input type="button" id="submitBtn" value="로그인"></td>
 						</tr>
 						<tr>
 							<td></td>

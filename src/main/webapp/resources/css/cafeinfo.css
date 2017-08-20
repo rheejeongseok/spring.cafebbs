@@ -29,6 +29,9 @@
 	font-size:16px;
 	margin-left: 16px;
 }
+.gradeScore{
+    display: none !important;
+}
 .cafe_addr{
 	color: #5a5a5a;
 	font-size: 14px;
@@ -81,7 +84,7 @@
 	line-height: 50px;
 	background:url("../img/menu_arrow.png") no-repeat;
 	background-size: 10px 10px;
-	background-position: 700px;
+	background-position: 96%;
 	background-color: #424242;
 	color: #e6e6e6;
 
@@ -162,7 +165,7 @@ font-size: 15px;
 }
 
 .review_list_detail{
-	display:block;
+	display:none;
 	border-left: 1px #7c7c7d solid;
 	border-right: 1px #7c7c7d solid;
 	border-bottom: 1px #7c7c7d solid;
@@ -207,20 +210,54 @@ font-size: 14px;
 	text-align: left;
 
 }
-.comment_view{}
-.list_writer{
-	display:inline-block;
+div[class^="comment_view"]{
+	padding: 10px 0;
+	border-top: 1px #cec5c5 solid;
+	border-bottom: 1px #cec5c5 solid;
+	margin: -1px 0;
+	position: relative;
 }
-.list_time{
+div[class^="btns"]{
+    position: absolute;
+    right:4%;
+}
+div[class^="btns"] button{
+    border:none;
+    width:40px;
+    height: 20px;
+    background: #bfdfe0;
+}
+div[class^="list_writer"]{
+	display:inline-block;
+	margin-left: 20px;
+}
+div[class^="list_time"]{
 	display:inline-block;
 	color: #9c9c9c;
-font-size: 14px;
+	font-size: 14px;
+	margin-left: 10px;
 
 }
-.list_grade{
+div[class^="list_grade"]{
 	display:inline-block !important;
 }
-.list_content{}
+div[class^="list_content"]{
+	padding: 10px 0;
+	margin: 15px 20px;
+}
+div[class^="list_content"] div[class^="content_text"]{
+	width: 90%;
+	margin: 0 auto;
+}
+div[class^="list_content"] div[class^="content_img"]{
+	text-align: center;
+	padding-bottom:15px;
+}
+div[class^="list_content"] img{
+	width:90%;
+	display: inline-block;
+	margin:0 auto;
+}
 .info_r{
 	width:24%;
 	float:right;
@@ -228,6 +265,10 @@ font-size: 14px;
 	padding: 10px;
 
 
+}
+
+.info_l .on{
+	display: block;
 }
 
 .simple_title{

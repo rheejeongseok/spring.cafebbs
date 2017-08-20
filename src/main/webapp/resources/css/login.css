@@ -51,6 +51,6 @@ div[class^=find] a{
     color:grey;
 }
 .footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }

@@ -1,12 +1,21 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" type="text/css" href="/resourcescss/index.css">
-	<link rel="stylesheet" type="text/css" href="/resourcescss/common.css">
-	<script type="text/javascript" src="/resourcesjs/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="/resourcesjs/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/resources/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
+	<script type="text/javascript" src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/common.js"></script>
+    <script>
+    $(function(){
+    	$('.cafe01').click(function(){
+    		window.location.href="/cafe/coffee";
+    	})
+    })
+    </script>
 </head>
 <body>
 	<div class="wrap">
@@ -15,67 +24,51 @@
 			<div class="content_wrap">
 				<div class="cafe01 cafediv">
 					<span class="cafe_title">커퓌</span><br>
-					<span class="cafe_sub">Coffee</span>
+					<span class="cafe_sub"><a href="/cafe/coffee">Coffee</a></span>
 				</div>
 				<div class="cafe02 cafediv">
 					<span class="cafe_title">할리스</span><br>
-					<span class="cafe_sub">Hollys</span>
+					<span class="cafe_sub"><a href="/cafe/coffee/hollys">Hollys</a></span>
 				</div>
 				<div class="cafe03 cafediv">
 					<span class="cafe_title">스타벅스</span><br>
-					<span class="cafe_sub">StarBucks</span>
+					<span class="cafe_sub"><a href="/cafe/coffee/starbucks">StarBucks</a></span>
 				</div>
 				<div class="cafe04 cafediv">
 					<span class="cafe_title">이디야</span><br>
-					<span class="cafe_sub">Ediya</span>
+					<span class="cafe_sub"><a href="/cafe/coffee/ediya">Ediya</a></span>
 				</div>
 				<div class="cafe05 cafediv">
 					<span class="cafe_title">빙수</span><br>
-					<span class="cafe_sub">BingSoo</span>
+					<span class="cafe_sub"><a href="/cafe/bingsoo">BingSoo</a></span>
 				</div>
 				<div class="cafe06 cafediv">
-					<span class="cafe_title">커피빈</span><br>
-					<span class="cafe_sub">Coffee Bean</span>
+					<span class="cafe_title">호미빙</span><br>
+					<span class="cafe_sub"><a href="/cafe/bingsoo/homibing">Coffee Bean</a></span>
 				</div>
 				<div class="cafe07 cafediv">
-					<span class="cafe_title">개인카페</span><br>
-					<span class="cafe_sub">Personal Cafe</span>
+					<span class="cafe_title">설빙</span><br>
+					<span class="cafe_sub"><a href="/cafe/bingsoo/seolbing">Personal Cafe</a></span>
 				</div>
 				<div class="cafe08 cafediv">
-					<span class="cafe_title">빙수</span><br>
-					<span class="cafe_sub">ice flakes with syrup</span>
-				</div>
-				<div class="cafe05 cafediv">
-					<span class="cafe_title">룸카페</span><br>
-					<span class="cafe_sub">Room Cafe</span>
-				</div>
-				<div class="cafe06 cafediv">
-					<span class="cafe_title">커피빈</span><br>
-					<span class="cafe_sub">Coffee Bean</span>
-				</div>
-				<div class="cafe07 cafediv">
-					<span class="cafe_title">개인카페</span><br>
-					<span class="cafe_sub">Personal Cafe</span>
-				</div>
-				<div class="cafe08 cafediv">
-					<span class="cafe_title">빙수</span><br>
-					<span class="cafe_sub">ice flakes with syrup</span>
+					<span class="cafe_title">밀탑빙수</span><br>
+					<span class="cafe_sub"><a href="/cafe/bingsoo/miltop">ice flakes with syrup</a></span>
 				</div>
 				<div class="cafe05 cafediv">
 					<span class="cafe_title">동물카페</span><br>
-					<span class="cafe_sub">Animal Cafe</span>
+					<span class="cafe_sub"><a href="/cafe/animal">Animal Cafe</a></span>
 				</div>
 				<div class="cafe06 cafediv">
-					<span class="cafe_title">커피빈</span><br>
-					<span class="cafe_sub">Coffee Bean</span>
+					<span class="cafe_title">강아지</span><br>
+					<span class="cafe_sub"><a href="/cafe/animal/dog">Coffee Bean</a></span>
 				</div>
 				<div class="cafe07 cafediv">
-					<span class="cafe_title">개인카페</span><br>
-					<span class="cafe_sub">Personal Cafe</span>
+					<span class="cafe_title">고양이</span><br>
+					<span class="cafe_sub"><a href="/cafe/animal/cat">Personal Cafe</a></span>
 				</div>
 				<div class="cafe08 cafediv">
-					<span class="cafe_title">빙수</span><br>
-					<span class="cafe_sub">ice flakes with syrup</span>
+					<span class="cafe_title">새</span><br>
+					<span class="cafe_sub"><a href="/cafe/animal/bird">ice flakes with syrup</a></span>
 				</div>
 				<div class="btm_slide">
 					<div class="ranking">
