@@ -6,12 +6,38 @@
     padding-left:18px;
     position: relative;
 }
-.cafe_type ul{
+.cafe_type>ul{
     font-size: 0;
     display: inline-block;
     width:380px;
 }
-.cafe_type li{
+.cafe_subtype {
+    position: absolute;
+    top: 80%;
+    left: 23%;
+    width: 700px;
+    text-align: left;
+    z-index:100;
+    margin-bottom:10px;
+    line-height:0 !important;
+    display:none;
+}
+
+.cafe_subtype li{
+    display: inline-block;
+    height: 20px;
+}
+
+.cafe_subtype li a{
+    height: 20px;
+}
+
+.cafe_subtype li a:hover{
+    text-decoration: underline;
+    color:#656969;
+}
+
+.cafe_type>ul>li{
     text-align: center;
     font-size: 16px;
     display: inline-block;
@@ -20,7 +46,8 @@
     line-height: 80px;
     margin-right:10px;
     margin-top:-25px;
-    margin-bottom:10px;
+    position: relative;
+    cursor:pointer;
 
 }
 .cafe_type li:hover{
@@ -31,7 +58,7 @@
 }
 .cafe_type .line{
     height: 4px;
-    width: 70%;
+    width: 74%;
     margin-right:20px;
     background-color: #bfdfe0;
     position: absolute;
@@ -58,6 +85,7 @@
 }
 .list_l img{
     width:100px;
+    height:100px;
 }
 .list_r{
     margin-left:15px;
@@ -78,13 +106,16 @@
     color:grey;
 }
 .moreBtn{
-	    width: 96%;
-    height: 30px;
+    width: 28%;
+    height: 40px;
     text-align: center;
-    line-height: 30px;
-    border: 1px red solid;
     margin: 0 auto;
-    cursor:pointer;
+    cursor: pointer;
+    line-height: 40px;
+    background: #bfdfe0;
+    font-size: 17px;
+    color: #525050;
+    margin-top:15px;
 }
 #grade{
     display: inline-block;

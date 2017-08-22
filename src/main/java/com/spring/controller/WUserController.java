@@ -52,20 +52,23 @@ public class WUserController {
 	}
 	
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
-    public String loginaction(Model model
+	@ResponseBody
+    public int loginaction(Model model
             ,@RequestParam(value="email",defaultValue="") String email
             ,@RequestParam(value="passwd",defaultValue="") String passwd
             ,HttpSession session) {
-        logger.info("login post");
         
-        ModelUser user = svruser.login(email, passwd);
+	    logger.info("login post");
         
-        if(user != null){
+        int result = svruser.loginajax(email, passwd);
+ 
+        if(result == 1){
+            ModelUser user = svruser.selectUser(email);
             session.setAttribute(WebConstants.SESSION_NAME, user);
-            return "redirect:/";
+            return result;
         }
         else{
-            return "cafe/login";
+            return result;
         }
         
     }
@@ -101,6 +104,11 @@ public class WUserController {
         String userphone = request.getParameter("userphone");
         String getemailselect = request.getParameter("emailselect");
         String sex = request.getParameter("sex");
+        String postcode = request.getParameter("postcode")+" ";
+        String roadAddress = request.getParameter("roadAddress")+" ";
+        String jibunAddress = request.getParameter("jibunAddress");
+        String useraddr = postcode + roadAddress + jibunAddress;
+        
         if(getemailselect == "on"){
             emailselect = 1;
         }else{
@@ -114,6 +122,7 @@ public class WUserController {
         user.setUserphone(userphone);
         user.setUsernickname(usernickname);
         user.setSex(sex);
+        user.setUseraddr(useraddr);
         model.addAttribute("user",user);
         
         int result = svruser.insertUser(user);
@@ -154,6 +163,44 @@ public class WUserController {
         int result = svruser.checknickname(usernickname);
         
         return result;
+    }
+	
+	
+	@RequestMapping(value = "/user/myinfo", method = RequestMethod.GET)
+    public String myinfo(Locale locale, Model model
+            ,HttpSession session) {
+        logger.info("myinfo");
+        
+        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        
+        ModelUser aaa = svruser.selectUser(user.getEmail());
+        
+        model.addAttribute("cafeuser",aaa);
+        
+        return "cafe/myinfo";
+    }
+	
+	@RequestMapping(value = "/user/findpwd", method = RequestMethod.GET)
+    public String findpwd(Locale locale, Model model
+            ,HttpSession session) {
+        logger.info("findpwd");
+        
+        return "cafe/findpwd";
+    }
+    
+    @RequestMapping(value = "/user/findpwd", method = RequestMethod.POST)
+    @ResponseBody
+    public String findpwdPost(Model model
+            ,@RequestParam(value="email",defaultValue="") String email
+            ,@RequestParam(value="userphone",defaultValue="") String userphone
+            ,HttpSession session) {
+        
+        logger.info("login post");
+        
+        String result = svruser.findpwd(email, userphone);
+ 
+        return result;
+        
     }
 	
 }

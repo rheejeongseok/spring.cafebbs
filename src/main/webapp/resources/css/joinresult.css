@@ -4,6 +4,18 @@
     background: #dffff6;
     margin: 0 auto;
     display: inline-block;
+    position: absolute;
+    top: 59%;
+    left: 50%;
+    margin-left: -200px;
+        margin-top: 80px;
+}
+.result_wrap a{
+    color: #797979;
+    font-size: 14px;
+}
+.text{
+    margin-top:28%;
 }
 .footer{
     position: fixed;

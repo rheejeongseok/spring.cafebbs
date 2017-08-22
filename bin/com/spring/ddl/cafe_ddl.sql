@@ -7,7 +7,7 @@ CREATE TABLE `tb_cafe_cafeinfo` (
 	`cafename` VARCHAR(30) NOT NULL,
 	`cafeaddr` VARCHAR(30) NOT NULL,
 	`cafephone` VARCHAR(30) NULL DEFAULT NULL,
-	`avg_grade` DOUBLE NULL DEFAULT '0',
+	`avg_grade` DOUBLE NOT NULL DEFAULT '0',
 	`review_count` INT(11) NULL DEFAULT '0',
 	`like_count` INT(11) NULL DEFAULT '0',
 	`cafebigtype` VARCHAR(50) NOT NULL DEFAULT '카페',

@@ -52,10 +52,10 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public ModelUser selectUser(int userno) {
+    public ModelUser selectUser(String email) {
         ModelUser result = null;
         try {
-            result = daouser.selectUser(userno);
+            result = daouser.selectUser(email);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             // e.printStackTrace();
@@ -130,6 +130,34 @@ public class ServiceUser implements IServiceUser {
             // TODO Auto-generated catch block
             // e.printStackTrace();
             logger.error("checkemail" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
+
+    @Override
+    public int loginajax(String email, String passwd) {
+        int result = 0;
+        try {
+            result = daouser.loginajax(email, passwd);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("loginajax" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
+
+    @Override
+    public String findpwd(String email, String userphone) {
+        String result = null;
+        try {
+            result = daouser.findpwd(email, userphone);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("findpwd" + e.getMessage() );
             throw e;
         }
         return result;

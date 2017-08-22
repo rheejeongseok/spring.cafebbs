@@ -28,6 +28,14 @@
               AND passwd = #{passwd}
     </select>
     
+    <!-- 로그인ajax -->
+    <select id="loginajax" parameterType="String" resultType="int">
+            select count(*)
+              from tb_cafe_user
+             WHERE email = #{email}
+              AND passwd = #{passwd}
+    </select>
+    
     <!-- 회원가입 -->
     <insert id="insertUser" parameterType="ModelUser">
         INSERT INTO tb_cafe_user (`email`, `passwd`, `userphone`, `useraddr`, `sex`, `emailselect`, `usernickname`) 
@@ -48,11 +56,18 @@
             where usernickname = #{usernickname}
     </select>
     
+    <!-- 비밀번호 찾기 -->
+    <select id="findpwd" parameterType="string" resultType="String">
+            SELECT passwd
+            FROM tb_cafe_user
+            where email = #{email} and userphone = #{userphone}
+    </select>
+    
     <!-- 회원 가져오기 -->
-    <select id="selectUser" parameterType="int" resultType="ModelUser">
+    <select id="selectUser" parameterType="String" resultType="ModelUser">
              SELECT *
              FROM tb_cafe_user
-             WHERE userno = #{userno}
+             WHERE email = #{email}
     </select>
 
     <!-- 회원 정보 수정 -->
@@ -108,6 +123,21 @@
          and brand = #{brand}
     </select>
     
+    <!-- 카페 cafebigtype cafeno>이상가져오기 -->
+    <select id="getCafeBigTypeUpList" parameterType="hashmap" resultType="ModelCafe">        
+        SELECT *
+          FROM tb_cafe_cafeinfo
+         WHERE cafebigtype = #{cafebigtype} and cafeno > #{cafeno}
+    </select>
+    
+    <!-- 카페 brand cafeno>이상가져오기 -->
+    <select id="getCafeBrandUpList" parameterType="hashmap" resultType="ModelCafe">        
+        SELECT *
+          FROM tb_cafe_cafeinfo
+         WHERE cafeno > #{cafeno}
+         and brand = #{brand}
+    </select>
+    
     <!-- 메뉴 리스트 가져오기 join 했을때임 흠.;-->
     <!-- <select id="getCafeMenu" parameterType="string" resultType="ModelMenu">        
         select mk.menucd,m.menu_name,m.price,m.description 
@@ -155,9 +185,10 @@
     </select>
     
     <!-- 카페 마지막 가져고이 -->
-    <select id="getMaxCafeAll" resultType="int">        
+    <select id="getMaxCafeAll" parameterType="String" resultType="int">        
         SELECT max(cafeno)
           FROM tb_cafe_cafeinfo
+          where cafebigtype = #{cafebigtype}
     </select>
     
      <!-- 카페 퍼스트 가져고이 -->
@@ -189,11 +220,33 @@
          WHERE cafeno = #{cafeno} 
     </select>
     
+    <!-- 즐찾 가져오기 -->
+    <select id="getBookmark" parameterType="hashmap" resultType="int">        
+        SELECT count(*)
+          FROM tb_cafe_like 
+         WHERE cafeno = #{cafeno}
+         and userno  = #{userno } 
+    </select>
+    
+    <!-- 카페 즐찾 하기 -->
+   <insert id="insertBookmark" parameterType="ModelLike">        
+        insert into tb_cafe_like (`cafeno`, `userno`)
+        values (#{cafeno},#{userno})
+    </insert>
+    
+    <!-- 즐찾 해제하기 -->
+    <delete id="deleteBookmark" parameterType="ModelLike">
+        DELETE FROM tb_cafe_like
+        WHERE cafeno = #{cafeno} 
+         and userno = #{userno}
+    </delete>
+    
     <!-- 카페 즐찾 갯수 구하기 -->
     <select id="getLikeCount" parameterType="int" resultType="int">        
         SELECT count(cafeno)
           FROM tb_cafe_like
          WHERE cafeno = #{cafeno} 
+         and userno = #{userno}
     </select>
     
     <!-- 카페 즐찾 증가 -->
@@ -217,6 +270,8 @@
          WHERE cafeno=#{cafeno};
     </update>
     
+     
+        
     <!-- 리뷰(댓글) 쓰기 -->
     <insert id="insertReview" parameterType="ModelReview">
         INSERT INTO tb_cafe_review (`usernickname`, `cafeno`, `content`, `grade`,`regdate`) 

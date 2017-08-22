@@ -48,27 +48,51 @@
 }
 .cafe05 {
 	background:url("../img/bingsoo.png") no-repeat;
-	background-position: 130px 85px;
-	background-size: 200px 200px;
+    background-position: 132px 50px;
+    background-size: 150px 200px;
 
 }
 .cafe06 {
-	background:url("../img/coffeebean.png") no-repeat;
-	background-position: 130px 85px;
-	background-size: 200px 200px;
+	background:url("../img/homibing.png") no-repeat;
+    background-position: 121px 139px;
+    background-size: 162px 108px;
 	background-color: #bfdfe0;
 }
 .cafe07 {
-	background:url("../img/personcafe.png") no-repeat;
-	background-position: 130px 85px;
-	background-size: 200px 200px;
+	background:url("../img/mealtop.png") no-repeat;
+    background-position: 143px 128px;
+    background-size: 150px 117px;
 
 }
 .cafe08 {
-	background:url("../img/bingsoo.png") no-repeat;
-	background-position: 130px 85px;
-	background-size: 200px 200px;
+    background:url("../img/sealbing.png") no-repeat;
+    background-position: 97px 75px;
+    background-size: 209px 201px;
 	background-color: #bfdfe0;
+}
+.cafe09 {
+    background:url("../img/animal.png") no-repeat;
+    background-position: 89px 77px;
+    background-size: 200px 200px;
+    
+}
+.cafe10 {
+    background:url("../img/dog.png") no-repeat;
+    background-position: 94px 96px;
+    background-size: 196px 160px;
+    background-color: #bfdfe0;
+}
+.cafe11 {
+    background:url("../img/cat.png") no-repeat;
+    background-position: 105px 69px;
+    background-size: 190px 181px;
+    
+}
+.cafe12 {
+    background:url("../img/bird.png") no-repeat;
+    background-position: 101px 73px;
+    background-size: 219px 179px;
+    background-color: #bfdfe0;
 }
 
 .ranking {
@@ -98,7 +122,7 @@
 	height: 40px;
     line-height: 40px;
 }
-.ranking .ranking_slide li>span{
+.ranking .ranking_slide li>a>span{
 	height:100%;
 	display:inline-block;
 }

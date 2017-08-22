@@ -7,10 +7,17 @@
 	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 	<script type="text/javascript" src="/resources/js/jquery-1.12.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/common.js"></script>
+    <script type="text/javascript" src="/resources/js/ajaxsetup.js"></script>
+    <script type="text/javascript" src="/resources/js/MyAppBoard.js"></script>
     <script>
     $(function(){
     	$('#submitBtn').click(function(){
-    		$('form').submit();
+    		
+    		var email = $('input[name=email]').val();
+    		var passwd = $('input[name=passwd]').val();
+    		console.log(email+passwd)
+    		
+    		return login(email,passwd)
     		/* window.location.href="/"; */
     	})
     })
@@ -40,7 +47,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<div class="find_member"><a href="">아이디 찾기 / 비밀번호 찾기</a></div>
+								<div class="find_member"><a href="/user/findpwd">비밀번호 찾기</a></div>
 							</td>
 						</tr>
 						<tr>

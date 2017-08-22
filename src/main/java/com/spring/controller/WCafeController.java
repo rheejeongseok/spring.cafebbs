@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.common.WebConstants;
 import com.spring.model.ModelCafe;
+import com.spring.model.ModelLike;
 import com.spring.model.ModelMenu;
 import com.spring.model.ModelReview;
 import com.spring.model.ModelUser;
@@ -76,9 +77,10 @@ public class WCafeController {
         }
         
         List<ModelCafe> cafe = svrcafe.getCafeBigTypeList(cafebigtype);
-        int maxCafe = svrcafe.getMaxCafeAll();
+        int maxCafe = svrcafe.getMaxCafeAll(cafebigtype);
         model.addAttribute("maxCafe",maxCafe);
         model.addAttribute("cafelist",cafe);
+        model.addAttribute("size",cafe.size());
         
         return "cafe/cafelist";
     }
@@ -108,6 +110,8 @@ public class WCafeController {
             }
             else if(brand.equals("personcafe")){
                 brand = "개인카페";
+            }else if(brand.equals("tomntom")){
+                brand = "탐탐";
             }
         }
         
@@ -117,11 +121,20 @@ public class WCafeController {
             if(brand.equals("homibing")){
                 brand = "호미빙";
             }
-            else if(brand.equals("seolbing")){
+            else if(brand.equals("sealbing")){
                 brand = "설빙";
             }
-            else if(brand.equals("miltop")){
+            else if(brand.equals("mealtop")){
                 brand = "밀탑빙수";
+            }
+            else if(brand.equals("iceflower")){
+                brand = "눈꽃빙수";
+            }
+            else if(brand.equals("oclumong")){
+                brand = "옥루몽";
+            }
+            else if(brand.equals("personbingsoo")){
+                brand = "개인빙수";
             }
             
         }
@@ -137,6 +150,9 @@ public class WCafeController {
             else if(brand.equals("bird")){
                 brand = "새";
             }
+            else if(brand.equals("etc")){
+                brand = "기타";
+            }
         }
         
         List<ModelCafe> cafe = svrcafe.getCafeBrandList(cafebigtype, brand);
@@ -144,9 +160,43 @@ public class WCafeController {
         model.addAttribute("maxCafe",maxCafe);
         model.addAttribute("brand",brand);
         model.addAttribute("cafelist",cafe);
+        model.addAttribute("cafebigtype",cafebigtype);
+        model.addAttribute("size",cafe.size());
+        
         
         return "cafe/cafelist";
     }
+	
+	@RequestMapping(value = "/morecafelist", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> morecafelist(Model model
+            ,@RequestParam(value="lastcafeno",defaultValue="-1") Integer lastcafeno
+            ,@RequestParam(value="listlast",defaultValue="-1") Integer listlast
+            ,@RequestParam(value="brand",defaultValue="") String brand
+            ,@RequestParam(value="cafebigtype",defaultValue="") String cafebigtype
+            ,HttpSession session
+            ) {
+       
+        logger.info("morecafelist");
+        
+        Map<String,Object> map = new HashMap<String,Object>();
+        
+        List<ModelCafe> cafe = svrcafe.getCafeBrandUpList(listlast, brand);
+        
+        List<ModelCafe> bigCafe = svrcafe.getCafeBigTypeUpList(listlast, cafebigtype);
+        
+        Object[] aa = cafe.toArray();
+        
+        Object[] bb = bigCafe.toArray();
+        
+        map.put("cafelist", aa);
+        map.put("bigcafelist", bb);
+        map.put("brand", brand);
+        return map;
+
+    }
+	
+	
 	
 	@RequestMapping(value = "/cafe1/{brand}/{cafeno}", method = RequestMethod.GET)
     public String cafebrand(Model model
@@ -174,6 +224,9 @@ public class WCafeController {
         else if(brand.equals("coffeebean")){
             brand = "커피빈";
         }
+        else if(brand.equals("tomntom")){
+            brand = "탐탐";
+        }
         else if(brand.equals("personcafe")){
             brand = "개인카페";
         }
@@ -186,6 +239,15 @@ public class WCafeController {
         else if(brand.equals("miltop")){
             brand = "밀탑빙수";
         }
+        else if(brand.equals("iceflower")){
+            brand = "눈꽃빙수";
+        }
+        else if(brand.equals("oclumong")){
+            brand = "옥루몽";
+        }
+        else if(brand.equals("personbingsoo")){
+            brand = "개인빙수";
+        }
         else if(brand.equals("dog")){
             brand = "강아지";
         }
@@ -195,19 +257,76 @@ public class WCafeController {
         else if(brand.equals("bird")){
             brand = "새";
         }
+        else if(brand.equals("etc")){
+            brand = "기타";
+        }
         
+        int userno = 0;
+        
+        if(user == null){
+            userno = 9999;
+        }else if(user != null){
+            userno = user.getUserno();
+        }
+            
+            
         List<ModelMenu> menuMain = svrcafe.getMenuMain(brand);
         List<ModelMenu> menuSub = svrcafe.getMenuSub(brand);
         List<ModelReview> reviews = svrcafe.getReviewList(cafeno);
+        int getlike = svrcafe.getBookmark(cafeno, userno);
         
         model.addAttribute("cafe",cafe);
         model.addAttribute("menuMain",menuMain);
         model.addAttribute("menuSub",menuSub);
         model.addAttribute("reviews",reviews);
         model.addAttribute("user",user);
+        model.addAttribute("getlike",getlike);
         
         return "cafe/cafeinfo";
     }
+	
+	@RequestMapping(value = "/clickLike", method = RequestMethod.POST)
+    @ResponseBody
+    public int clickLike(Model model
+            ,@RequestParam(value="userno",defaultValue="-1") Integer userno
+            ,@RequestParam(value="cafeno",defaultValue="-1") Integer cafeno
+            ,HttpSession session
+            ) {
+       
+        logger.info("clickLike");
+      
+        ModelLike like = new ModelLike();
+        like.setCafeno(cafeno);
+        like.setUserno(userno);
+        int result = svrcafe.insertBookmark(like);
+        svrcafe.increaseLike(cafeno);
+        
+        return result;
+           
+
+    }
+	
+	@RequestMapping(value = "/deleteLike", method = RequestMethod.POST)
+    @ResponseBody
+    public int deleteLike(Model model
+            ,@RequestParam(value="userno",defaultValue="-1") Integer userno
+            ,@RequestParam(value="cafeno",defaultValue="-1") Integer cafeno
+            ,HttpSession session
+            ) {
+       
+        logger.info("clickLike");
+      
+        ModelLike like = new ModelLike();
+        like.setCafeno(cafeno);
+        like.setUserno(userno);
+        int result = svrcafe.deleteBookmark(like);
+        svrcafe.increaseLike(cafeno);
+        
+        return result;
+           
+
+    }
+	
 	
 	@RequestMapping(value = "/commentadd", method = RequestMethod.POST)
     @ResponseBody
@@ -291,4 +410,6 @@ public class WCafeController {
            
 
 	}
+	
+	
 }

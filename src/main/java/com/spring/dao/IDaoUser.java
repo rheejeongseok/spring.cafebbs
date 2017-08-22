@@ -10,8 +10,10 @@ import com.spring.model.ModelUser;
 public interface IDaoUser {
     
     ModelUser login(String email,String passwd);
+    int loginajax(String email, String passwd);
     int insertUser(ModelUser user);
-    ModelUser selectUser(int userno);
+    String findpwd(String email, String userphone);
+    ModelUser selectUser(String email);
     List<ModelUser> selectUserList(ModelUser user);
     int updateUser(ModelUser update, ModelUser search);
     int deleteUser(String email);

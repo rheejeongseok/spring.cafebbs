@@ -7,6 +7,24 @@
 	<link rel="stylesheet" type="text/css" href="/resources/css/common.css">
 	<script type="text/javascript" src="/resources/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/common.js"></script>
+        <script type="text/javascript" src="/resources/js/ajaxsetup.js"></script>
+    <script type="text/javascript" src="/resources/js/MyAppBoard.js"></script>
+    <script>
+    $(function(){
+    	
+    	$('#submitBtn').click(function(){
+    		
+    		var email = $('input[name=passwd]').val();
+    		var userphone = $('input[name=userphone]').val();
+    		console.log(email+userphone);
+    		
+    		return findpwd(email,userphone)
+    		
+    	})
+    	
+    })
+    
+    </script>
 </head>
 <body>
 	<div class="wrap">
@@ -27,14 +45,14 @@
 						</colgroup>
 						<tr>
 							<td>이메일 입력</td>
-							<td><input type="text" name="pwd" placeholder="이메일을 입력해 주세요"></td>
+							<td><input type="text" name="passwd" placeholder="이메일을 입력해 주세요"></td>
 						</tr>
 						<tr>
 							<td>전화번호 입력</td>
-							<td><input type="text" name="pwd" placeholder="전화번호를 입력해 주세요"></td>
+							<td><input type="text" name="userphone" placeholder="전화번호를 입력해 주세요"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="button" id="submitBtn" value="비밀번호수정 완료"></td>
+							<td colspan="2"><input type="button" id="submitBtn" value="비밀번호 찾기"></td>
 						</tr>
 					</table>
 				</form>

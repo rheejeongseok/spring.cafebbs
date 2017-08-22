@@ -12,6 +12,11 @@ $(function(){
 			}
 		})
 		
+		if($('#checkEmail').attr("class") != "on" || $('#checkNick').attr("class") != "on"){
+			alert("이메일, 닉네임 중복체크를 확인해 주세요");
+			return false;
+		}
+		
 			if(count == 0 && passwd == passwdC){
 				
 				$('form').submit();
@@ -22,12 +27,12 @@ $(function(){
 				alert("모든 사항을 입력해야합니다.")
 				return false;
 			}
-			else if(count == 0 &&pwd != pwdC ){
+			else if(count == 0 &&passwd != passwdC ){
 				alert("비밀번호를 다시 확인해주세요")
 				$('input[name="password"]').focus();
 				return false;
 			}
-			else if(pwd != pwdC){
+			else if(passwd != passwdC){
 				alert("비밀번호를 다시 확인해주세요")
 				$('input[name="password"]').focus();
 				return false;
@@ -35,6 +40,9 @@ $(function(){
 			else{
 				return false;
 			}
+		
+		
+		
 		})
 		
 		$('#checkEmail').click(function(){
@@ -55,6 +63,7 @@ $(function(){
 			    	$('input[name="email"]').val("");
 			    }else{
 			    	alert("사용가능한 아이디입니다.");
+			    	$('#checkEmail').attr("class","on");
 			    }
 			})
 		})
@@ -77,6 +86,7 @@ $(function(){
 			    	$('input[name="usernickname"]').val("");
 			    }else{
 			    	alert("사용가능한 닉네임");
+			    	$('#checkNick').attr("class","on")
 			    }
 			})
 		})

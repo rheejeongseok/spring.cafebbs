@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.dao.IDaoCafe;
 import com.spring.model.ModelCafe;
+import com.spring.model.ModelLike;
 import com.spring.model.ModelMenu;
 import com.spring.model.ModelReview;
 
@@ -309,14 +310,85 @@ public class ServiceCafe implements IServiceCafe {
 	}
 
 	@Override
-	public int getMaxCafeAll() {
+	public int getMaxCafeAll(String cafebigtype) {
 		int result = 0;
 		try {
-			result = daocafe.getMaxCafeAll();
+			result = daocafe.getMaxCafeAll(cafebigtype);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
 	}
+
+    @Override
+    public List<ModelCafe> getCafeBrandUpList(int cafeno, String brand) {
+        List<ModelCafe> result = null;
+        try {
+            result = daocafe.getCafeBrandUpList(cafeno, brand);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("getCafeBrandUpList" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
+
+    @Override
+    public List<ModelCafe> getCafeBigTypeUpList(int cafeno,
+            String cafebigtype) {
+        List<ModelCafe> result = null;
+        try {
+            result = daocafe.getCafeBigTypeUpList(cafeno, cafebigtype);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("getCafeBigTypeUpList" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
+
+    @Override
+    public int getBookmark(int cafeno, int userno) {
+        int result = 0;
+        try {
+            result = daocafe.getBookmark(cafeno, userno);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("getBookmark" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
+
+    @Override
+    public int insertBookmark(ModelLike like) {
+        int result = 0;
+        try {
+            result = daocafe.insertBookmark(like);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("insertBookmark" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
+
+    @Override
+    public int deleteBookmark(ModelLike like) {
+        int result = 0;
+        try {
+            result = daocafe.deleteBookmark(like);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            // e.printStackTrace();
+            logger.error("deleteBookmark" + e.getMessage() );
+            throw e;
+        }
+        return result;
+    }
 }

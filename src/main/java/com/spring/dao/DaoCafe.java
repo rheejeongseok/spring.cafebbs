@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.spring.model.ModelCafe;
+import com.spring.model.ModelLike;
 import com.spring.model.ModelMenu;
 import com.spring.model.ModelReview;
 
@@ -155,10 +156,52 @@ public class DaoCafe implements IDaoCafe {
 	}
 
 	@Override
-	public int getMaxCafeAll() {
+	public int getMaxCafeAll(String cafebigtype) {
 		// TODO Auto-generated method stub
-		return session.selectOne("mapper.mysql.mapperCafe.getMaxCafeAll");
+		return session.selectOne("mapper.mysql.mapperCafe.getMaxCafeAll",cafebigtype);
 	}
+
+    @Override
+    public List<ModelCafe> getCafeBrandUpList(int cafeno, String brand) {
+        // TODO Auto-generated method stub
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("cafeno", cafeno);
+        map.put("brand", brand);
+        
+        return session.selectList("mapper.mysql.mapperCafe.getCafeBrandUpList",map);
+    }
+
+    @Override
+    public List<ModelCafe> getCafeBigTypeUpList(int cafeno,
+            String cafebigtype) {
+        // TODO Auto-generated method stub
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("cafeno", cafeno);
+        map.put("cafebigtype", cafebigtype);
+        
+        return session.selectList("mapper.mysql.mapperCafe.getCafeBigTypeUpList",map);
+    }
+
+    @Override
+    public int getBookmark(int cafeno, int userno) {
+        // TODO Auto-generated method stub
+        Map<String,Integer> map = new HashMap<String,Integer>();
+        map.put("cafeno", cafeno);
+        map.put("userno", userno);
+        return session.selectOne("mapper.mysql.mapperCafe.getBookmark",map);
+    }
+
+    @Override
+    public int insertBookmark(ModelLike like) {
+        // TODO Auto-generated method stub
+        return session.insert("mapper.mysql.mapperCafe.insertBookmark",like);
+    }
+
+    @Override
+    public int deleteBookmark(ModelLike like) {
+        // TODO Auto-generated method stub
+        return session.delete("mapper.mysql.mapperCafe.deleteBookmark",like);
+    }
 
    
 }

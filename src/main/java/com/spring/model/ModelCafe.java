@@ -15,7 +15,10 @@ public class ModelCafe {
     private Integer like_count = 0; //`like_count` INT(11) NULL DEFAULT '0',
     private String cafebigtype = ""; //`cafebigtype` VARCHAR(50) NOT NULL DEFAULT '카페',
     private String cafesmalltype = ""; //`cafesmalltype` VARCHAR(50) NOT NULL DEFAULT '프렌차이즈',
-   
+    private String businessnum = "";
+    private String deliveryloc = "";
+    private String opentime = "";
+    
     public Integer getCafeno() {
         return cafeno;
     }
@@ -94,6 +97,44 @@ public class ModelCafe {
     }
     public ModelCafe() {
         super();
+    }
+    public String getBusinessnum() {
+        return businessnum;
+    }
+    public void setBusinessnum(String businessnum) {
+        this.businessnum = businessnum;
+    }
+    public String getDeliveryloc() {
+        return deliveryloc;
+    }
+    public void setDeliveryloc(String deliveryloc) {
+        this.deliveryloc = deliveryloc;
+    }
+    public String getOpentime() {
+        return opentime;
+    }
+    public void setOpentime(String opentime) {
+        this.opentime = opentime;
+    }
+    public ModelCafe(Integer cafeno, String brand, String cafename,
+            String cafeaddr, String cafephone, Double avg_grade,
+            Integer review_count, Integer like_count, String cafebigtype,
+            String cafesmalltype, String businessnum, String deliveryloc,
+            String opentime) {
+        super();
+        this.cafeno = cafeno;
+        this.brand = brand;
+        this.cafename = cafename;
+        this.cafeaddr = cafeaddr;
+        this.cafephone = cafephone;
+        this.avg_grade = avg_grade;
+        this.review_count = review_count;
+        this.like_count = like_count;
+        this.cafebigtype = cafebigtype;
+        this.cafesmalltype = cafesmalltype;
+        this.businessnum = businessnum;
+        this.deliveryloc = deliveryloc;
+        this.opentime = opentime;
     }
     
     

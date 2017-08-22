@@ -114,7 +114,34 @@
         	return commentdelete(commentno);
         	
         })
+        
+        $('body').on("click",".bookmark",function(){
+        	var userno = $(this).attr('userno');
+            var cafeno = $(this).parents('.info_t').find('.cafe_title').attr('cafeno');
             
+            console.log("userno = "+ userno+" cafeno = "+cafeno);
+            
+            return clickLike(userno,cafeno);
+            
+        })
+       
+        $('body').on("click",".ok_bookmark",function(){
+        	var userno = $(this).attr('userno');
+            var cafeno = $(this).parents('.info_t').find('.cafe_title').attr('cafeno');
+            
+            return deleteLike(userno,cafeno)
+        })
+        
+       $('body').on("click",".not_bookmark",function(){
+    	   alert("로그인 하셔야 합니다.");
+       })
+       
+       
+       $('body').on("click",".not_login",function(){
+    	   alert("로그인을 하셔야 합니다.");
+    	   window.location.href="/user/login";
+       })
+       
 		});
 	</script>
 </head>
@@ -125,12 +152,25 @@
 			<div class="content_wrap">
 				<div class="info_wrap">
 					<div class="info_t">
-					<div class="cafe_title">${cafe.cafename }</div><em>l</em>
-					<div class="cafe_addr">${cafe.cafeaddr }</div><em>|</em>
-                    <div class="gradeScore">${cafe.avg_grade }</div>
-					<div class="cafe_grade"></div>
-					<div class="like_count">${cafe.review_count }개의 리뷰</div>
-				</div>
+    					<div class="cafe_title" cafeno="${cafe.cafeno }">${cafe.cafename }</div><em>l</em>
+    					<div class="cafe_addr">${cafe.cafeaddr }</div><em>|</em>
+                        <div class="gradeScore">${cafe.avg_grade }</div>
+    					<div class="cafe_grade"></div>
+    					<div class="reivew_count">${cafe.review_count }개의 리뷰</div>
+                        <div class="like_count">
+                        <c:choose>
+                            <c:when test="${getlike == 1 }">
+                                <img src="/resources/img/like.png" userno="${user.userno }" class="ok_bookmark" alt="" />
+                            </c:when>
+                            <c:when test="${getlike != 1 and not empty user}">
+                                <img src="/resources/img/not_like.png" userno="${user.userno }" class="bookmark" alt="" />
+                            </c:when>
+                            <c:otherwise>
+                                <img src="/resources/img/not_like.png" class="not_bookmark" alt="" />
+                            </c:otherwise>
+                        </c:choose>
+                        </div>
+    				</div>
 				<div class="info_l">
 					<ul class="cafe_category">
 						<li class="menu_list"><a href="javascript:void(0)" class="on">메뉴</a></li>
@@ -160,9 +200,9 @@
 						<div class="cafe_info">
 							<div class="info_subtitle">업체정보</div>
 							<div class="info_description">
-								<div class="description_sub">영업시간</div> <div class="description_text">10:00 - 21:15</div>
+								<div class="description_sub">영업시간</div> <div class="description_text">${cafe.opentime }</div>
 								<br>
-								<div class="description_sub">전화번호</div> <div class="description_text">${cafe.cafephone }</div>
+								<div class="description_sub">전화번호</div> <div class="description_text">${cafe.businessnum }</div>
 							</div>
 						</div>
 						<div class="business_info">
@@ -179,7 +219,7 @@
 							<div class="info_subtitle">업체한마디</div>
 							<div class="info_description">
 								<div class="description_sub">하고싶은말</div>
-								<div class="description_text">오예</div>
+								<div class="description_text">항상 고객님께 보답하는 업체가 되겠습니다.</div>
 							</div>
 						</div>
 						<div class="cafe_event">
@@ -204,8 +244,8 @@
                         <c:otherwise>
                         <div class="comment_write redirect">
                             <div class="write_writer">로그인 후에 작성가능합니다.</div>
-                            <div class="write_content">
-                                <textarea></textarea>
+                            <div class="write_content not_login">
+                                <textarea style="height:65px;"></textarea>
                                 <button id="submitBtn">댓글쓰기</button>
                             </div>
                         </div>
@@ -238,17 +278,21 @@
 						<div class="simple_simple">
 							<ul>
 								<li>
-									<span class="simple_category">운영시간</span>
-									<span class="simple_explain">11 ~ 24</span>
+									<span class="simple_category">운영시간 : </span>
+									<span class="simple_explain">${cafe.opentime }</span>
 								</li>
 								<li>
-									<span class="simple_category">전화번호</span>
-									<span class="simple_explain">${cafe.cafephone }</span>
+									<span class="simple_category">전화번호 : </span>
+									<span class="simple_explain">${cafe.businessnum }</span>
 								</li>
 								<li>
-									<span class="simple_category">카페주소</span>
+									<span class="simple_category">카페주소 : </span>
 									<span class="simple_explain">${cafe.cafeaddr }</span>
 								</li>
+                                <li>
+                                    <span class="simple_category">배달가능지역 : </span>
+                                    <span class="simple_explain">${cafe.deliveryloc }</span>
+                                </li>
 							</ul>
 						</div>
 					</div>

@@ -1,0 +1,47 @@
+.infotitle{
+    width: 800px;
+    text-align: left;
+    margin: 0 auto;
+    padding-bottom: 11px;
+    font-size: 20px;
+}
+.line{
+	height: 4px;
+    width: 635px;
+    background-color: #bfdfe0;
+    float: right;
+    margin-top: 15px;
+}
+
+.infoform{
+	width:800px;
+	margin:0 auto;
+	text-align: left;
+	outline:1px black solid;
+	padding:30px;
+}
+.infoform input[type="text"],
+.infoform input[type="password"]{
+	width:240px;
+	padding-left:10px;
+	height:35px;
+	background-color:#bfdfe0;
+	border:none;
+}
+.infoform .addrtext{
+	width:200px !important;
+}
+
+
+.infoform td{
+	padding:10px 0;
+	border-bottom: 1px #bfb9b9 solid;
+}
+
+.infoform .description{
+	font-size:12px;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+}

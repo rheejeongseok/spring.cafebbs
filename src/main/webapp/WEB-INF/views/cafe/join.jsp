@@ -108,10 +108,10 @@
 						<tr>
 							<td>주소</td>
 							<td>
-								<input type="text" id="postcode" placeholder="우편번호">
+								<input type="text" id="postcode" name="postcode" placeholder="우편번호">
 								<input type="button" onclick="Postcode()" value="우편번호 찾기" id="findaddr"><br><br>
-								<input type="text" id="roadAddress" class="addrtext" placeholder="도로명주소">
-								<input type="text" id="jibunAddress" class="addrtext" placeholder="지번주소">
+								<input type="text" id="roadAddress" name="roadAddress" class="addrtext" placeholder="도로명주소">
+								<input type="text" id="jibunAddress" name="jibunAddress" class="addrtext" placeholder="지번주소">
 							</td>
 						</tr>
 						<tr>

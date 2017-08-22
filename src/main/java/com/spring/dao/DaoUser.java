@@ -40,9 +40,9 @@ public class DaoUser implements IDaoUser {
     }
     
     @Override
-    public ModelUser selectUser(int userno) {
+    public ModelUser selectUser(String email) {
         // TODO Auto-generated method stub
-        return session.selectOne("mapper.mysql.mapperCafe.selectUser",userno);
+        return session.selectOne("mapper.mysql.mapperCafe.selectUser",email);
     }
     
     @Override
@@ -76,5 +76,22 @@ public class DaoUser implements IDaoUser {
     public int checknickname(String usernickname) {
         // TODO Auto-generated method stub
         return session.selectOne("mapper.mysql.mapperCafe.checknickname",usernickname);
+    }
+
+    @Override
+    public int loginajax(String email, String passwd) {
+        Map<String, String> map = new HashMap<String,String>();
+        map.put("email", email);
+        map.put("passwd", passwd);
+        return session.selectOne("mapper.mysql.mapperCafe.loginajax",map);
+    }
+
+    @Override
+    public String findpwd(String email, String userphone) {
+        Map<String, String>map = new HashMap<String,String>();
+        map.put("email", email);
+        map.put("userphone", userphone);
+        
+        return session.selectOne("mapper.mysql.mapperCafe.findpwd",map);
     }
 }
