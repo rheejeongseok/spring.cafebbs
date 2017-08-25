@@ -18,7 +18,7 @@
 	margin:0 auto;
 	text-align: left;
 	outline:1px black solid;
-	padding:30px;
+	padding:30px 30px 5px 30px;
 }
 .infoform input[type="text"],
 .infoform input[type="password"]{
@@ -36,6 +36,19 @@
 .infoform td{
 	padding:10px 0;
 	border-bottom: 1px #bfb9b9 solid;
+}
+.infoform tr:last-child td{
+    border: none;
+    text-align: center;
+}
+.infoform tr:last-child td a{
+    background: #bfdfe0;
+    color: #525050;
+    font-size: 17px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    width: 162px;
 }
 
 .infoform .description{

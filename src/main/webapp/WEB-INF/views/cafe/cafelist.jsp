@@ -187,7 +187,7 @@
                                     <img src="/resources/img/hollys.png">
                                 </c:when>
                                 <c:when test="${list.brand == '카페베네'}">
-                                    <img src="/resources/img/hollys.png">
+                                    <img src="/resources/img/cafebene.png">
                                 </c:when>
                                 <c:when test="${list.brand == '이디야' }">
                                     <img src="/resources/img/ediya.png">
@@ -216,6 +216,9 @@
                                  <c:when test="${list.brand == '눈꽃빙수' }">
                                     <img src="/resources/img/iceflower.png">
                                 </c:when>
+                                 <c:when test="${list.brand == '개인빙수' }">
+                                    <img src="/resources/img/bingsoo.png">
+                                </c:when>
                                 <c:when test="${list.brand == '강아지' }">
                                     <img src="/resources/img/dog.png">
                                 </c:when>
@@ -223,7 +226,7 @@
                                     <img src="/resources/img/cat.png">
                                 </c:when>
                                 <c:when test="${list.brand == '새' }">
-                                    <img src="/resources/img/iceflower.png">
+                                    <img src="/resources/img/bird.png">
                                 </c:when>
                                 <c:when test="${list.brand == '기타' }">
                                     <img src="/resources/img/animal.png">

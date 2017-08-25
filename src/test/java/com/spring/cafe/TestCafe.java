@@ -12,10 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.spring.model.ModelCafe;
-import com.spring.model.ModelMenu;
-import com.spring.model.ModelReview;
-import com.spring.service.IServiceCafe;
+import com.spring.cafebbs.model.ModelCafe;
+import com.spring.cafebbs.model.ModelMenu;
+import com.spring.cafebbs.model.ModelReview;
+import com.spring.cafebbs.service.IServiceCafe;
 
 public class TestCafe {
     // SLF4J Logging

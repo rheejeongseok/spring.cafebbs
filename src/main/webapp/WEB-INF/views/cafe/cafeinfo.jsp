@@ -72,7 +72,7 @@
             	 alert("평점을 입력해주세요")
              }
              return commentadd(cafeno,content,grade);
-         })
+             })
          
          $("body").on('click','.modifyBtn',function(){
         	 
@@ -237,8 +237,8 @@
 							<div class="write_time"><fmt:formatDate value="${toDay}" pattern="yyyy-MM-dd" /></div>
 							<div class="write_content">
 								<textarea style="height:65px;"></textarea>
-								<button id="submitBtn">댓글쓰기</button>
-							</div>
+                                <button id="submitBtn">댓글쓰기</button>
+                            </div>
                         </div>
                         </c:when>
                         <c:otherwise>

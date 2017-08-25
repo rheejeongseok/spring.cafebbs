@@ -48,6 +48,9 @@
 								${cafeuser.sex }
 							</td>
 						</tr>
+                        <tr>
+                            <td colspan="2"><a href="/user/findpwd" class="findpwd">비밀번호 변경</a></td>
+                        </tr>
 					</table>
 				</form>
 			</div>

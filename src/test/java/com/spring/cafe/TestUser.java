@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.spring.model.ModelUser;
-import com.spring.service.IServiceUser;
+import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.service.IServiceUser;
 
 
 public class TestUser {
