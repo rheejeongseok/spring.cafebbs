@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.cafebbs.common.WebConstants;
-import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.common.CafeWebConstants;
+import com.spring.cafebbs.model.ModelCafeUser;
 import com.spring.cafebbs.service.IServiceUser;
 
 /**
@@ -44,7 +44,7 @@ public class CafeUserController {
 	        ,HttpSession session) {
 		logger.info("login");
 		
-		if(session.getAttribute(WebConstants.SESSION_NAME) != null){
+		if(session.getAttribute(CafeWebConstants.SESSION_NAME) != null){
 		    return "redirect:/";
 		}
 		
@@ -63,8 +63,8 @@ public class CafeUserController {
         int result = svruser.loginajax(email, passwd);
  
         if(result == 1){
-            ModelUser user = svruser.selectUser(email);
-            session.setAttribute(WebConstants.SESSION_NAME, user);
+            ModelCafeUser user = svruser.selectUser(email);
+            session.setAttribute(CafeWebConstants.SESSION_NAME, user);
             return result;
         }
         else{
@@ -78,7 +78,7 @@ public class CafeUserController {
             ,HttpSession session) {
         logger.info("logout");
         
-        session.removeAttribute(WebConstants.SESSION_NAME);
+        session.removeAttribute(CafeWebConstants.SESSION_NAME);
         
         return "redirect:/";
     }
@@ -115,7 +115,7 @@ public class CafeUserController {
             emailselect = 0;
         }
         
-        ModelUser user = new ModelUser();
+        ModelCafeUser user = new ModelCafeUser();
         user.setEmail(email);
         user.setEmailselect(emailselect);
         user.setPasswd(passwd);
@@ -171,9 +171,9 @@ public class CafeUserController {
             ,HttpSession session) {
         logger.info("myinfo");
         
-        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        ModelCafeUser user = (ModelCafeUser) session.getAttribute(CafeWebConstants.SESSION_NAME);
         
-        ModelUser aaa = svruser.selectUser(user.getEmail());
+        ModelCafeUser aaa = svruser.selectUser(user.getEmail());
         
         model.addAttribute("cafeuser",aaa);
         

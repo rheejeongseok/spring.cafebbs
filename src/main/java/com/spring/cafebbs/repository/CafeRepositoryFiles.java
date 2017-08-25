@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 @Repository
-public class RepositoryFiles {
+public class CafeRepositoryFiles {
  
     private List<MultipartFile> files;
 
@@ -18,7 +18,7 @@ public class RepositoryFiles {
         this.files = files;
     }
 
-    public RepositoryFiles() {
+    public CafeRepositoryFiles() {
         super();
     }
 }

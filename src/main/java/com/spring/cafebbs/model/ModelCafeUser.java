@@ -3,7 +3,7 @@ package com.spring.cafebbs.model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ModelUser {
+public class ModelCafeUser {
     
 
     private Integer userno = 0; //`userno` INT(11) NOT NULL AUTO_INCREMENT,
@@ -69,7 +69,7 @@ public class ModelUser {
     public void setUsernickname(String usernickname) {
         this.usernickname = usernickname;
     }
-    public ModelUser(Integer userno, Integer userlevel, String email,
+    public ModelCafeUser(Integer userno, Integer userlevel, String email,
             String passwd, String userphone, String useraddr, String sex,
             Integer emailselect, String usernickname) {
         super();
@@ -83,7 +83,7 @@ public class ModelUser {
         this.emailselect = emailselect;
         this.usernickname = usernickname;
     }
-    public ModelUser() {
+    public ModelCafeUser() {
         super();
     }
     

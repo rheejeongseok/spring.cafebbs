@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.cafebbs.common.WebConstants;
+import com.spring.cafebbs.common.CafeWebConstants;
 import com.spring.cafebbs.model.ModelCafe;
 import com.spring.cafebbs.model.ModelLike;
 import com.spring.cafebbs.model.ModelMenu;
 import com.spring.cafebbs.model.ModelReview;
-import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.model.ModelCafeUser;
 import com.spring.cafebbs.service.IServiceCafe;
 
 /**
@@ -204,7 +204,7 @@ public class CafeController {
             ,HttpSession session) {
         logger.info("cafebrand");
         
-        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        ModelCafeUser user = (ModelCafeUser) session.getAttribute(CafeWebConstants.SESSION_NAME);
         
         ModelCafe cafe = svrcafe.getCafeOne(cafeno);
         
@@ -335,7 +335,7 @@ public class CafeController {
             ,@RequestParam(value="grade",defaultValue="") Double grade
             ,HttpSession session) {
         
-        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        ModelCafeUser user = (ModelCafeUser) session.getAttribute(CafeWebConstants.SESSION_NAME);
         
         Map<String, Object> map = new HashMap<String,Object>();
         
@@ -379,7 +379,7 @@ public class CafeController {
        
         logger.info("commentupdate");
         
-        ModelUser user = (ModelUser) session.getAttribute(WebConstants.SESSION_NAME);
+        ModelCafeUser user = (ModelCafeUser) session.getAttribute(CafeWebConstants.SESSION_NAME);
         
         /*ModelComments commget = new ModelComments(commentno,text);*/
         

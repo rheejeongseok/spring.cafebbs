@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.model.ModelCafeUser;
 import com.spring.cafebbs.service.IServiceUser;
 
 
@@ -38,7 +38,7 @@ public class TestUser {
     @Test
     public void testinsertUser() {
         
-        ModelUser user = new ModelUser();
+        ModelCafeUser user = new ModelCafeUser();
         user.setEmail("abcdefg");
         user.setPasswd("aaaa");
         user.setUserphone("ababaab");
@@ -55,8 +55,8 @@ public class TestUser {
     @Test
     public void testupdateUser() {
         
-        ModelUser update = new ModelUser();
-        ModelUser search = new ModelUser();
+        ModelCafeUser update = new ModelCafeUser();
+        ModelCafeUser search = new ModelCafeUser();
         
         update.setUserphone("바아꿈");
         update.setUseraddr("바아꾸움");

@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.model.ModelCafeUser;
 
 
 @Repository("daouser")
@@ -25,7 +25,7 @@ public class DaoUser implements IDaoUser {
     
     
     @Override
-    public ModelUser login(String email,String passwd) {
+    public ModelCafeUser login(String email,String passwd) {
         // TODO Auto-generated method stub
         Map<String,String> map = new HashMap<String,String>();
         map.put("email", email);
@@ -34,27 +34,27 @@ public class DaoUser implements IDaoUser {
     }
     
     @Override
-    public int insertUser(ModelUser user) {
+    public int insertUser(ModelCafeUser user) {
         // TODO Auto-generated method stub
         return session.insert("mapper.mysql.mapperCafe.insertUser",user);
     }
     
     @Override
-    public ModelUser selectUser(String email) {
+    public ModelCafeUser selectUser(String email) {
         // TODO Auto-generated method stub
         return session.selectOne("mapper.mysql.mapperCafe.selectUser",email);
     }
     
     @Override
-    public List<ModelUser> selectUserList(ModelUser user) {
+    public List<ModelCafeUser> selectUserList(ModelCafeUser user) {
         // TODO Auto-generated method stub
         return session.selectList("mapper.mysql.mapperCafe.selectUserList",user);
     }
     
     @Override
-    public int updateUser(ModelUser update, ModelUser search) {
+    public int updateUser(ModelCafeUser update, ModelCafeUser search) {
         // TODO Auto-generated method stub
-        Map<String,ModelUser> map = new HashMap<String,ModelUser>();
+        Map<String,ModelCafeUser> map = new HashMap<String,ModelCafeUser>();
         map.put("update", update);
         map.put("search", search);
         return session.update("mapper.mysql.mapperCafe.updateUser",map);

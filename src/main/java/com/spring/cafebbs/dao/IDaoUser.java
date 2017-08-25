@@ -5,17 +5,17 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.model.ModelCafeUser;
 
 public interface IDaoUser {
     
-    ModelUser login(String email,String passwd);
+    ModelCafeUser login(String email,String passwd);
     int loginajax(String email, String passwd);
-    int insertUser(ModelUser user);
+    int insertUser(ModelCafeUser user);
     String findpwd(String email, String userphone);
-    ModelUser selectUser(String email);
-    List<ModelUser> selectUserList(ModelUser user);
-    int updateUser(ModelUser update, ModelUser search);
+    ModelCafeUser selectUser(String email);
+    List<ModelCafeUser> selectUserList(ModelCafeUser user);
+    int updateUser(ModelCafeUser update, ModelCafeUser search);
     int deleteUser(String email);
     int checkemail(String email);
     int checknickname(String usernickname);

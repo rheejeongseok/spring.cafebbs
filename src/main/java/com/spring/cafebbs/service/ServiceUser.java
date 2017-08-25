@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.spring.cafebbs.dao.IDaoUser;
-import com.spring.cafebbs.model.ModelUser;
+import com.spring.cafebbs.model.ModelCafeUser;
 
 @Service("serviceuser")
 public class ServiceUser implements IServiceUser {
@@ -22,8 +22,8 @@ public class ServiceUser implements IServiceUser {
     private IDaoUser daouser;
     
     @Override
-    public ModelUser login(String email,String passwd) {
-        ModelUser result = null;
+    public ModelCafeUser login(String email,String passwd) {
+        ModelCafeUser result = null;
         try {
             result = daouser.login(email,passwd);
         } catch (Exception e) {
@@ -36,7 +36,7 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public int insertUser(ModelUser user) {
+    public int insertUser(ModelCafeUser user) {
         
         int result = 0;
         try {
@@ -52,8 +52,8 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public ModelUser selectUser(String email) {
-        ModelUser result = null;
+    public ModelCafeUser selectUser(String email) {
+        ModelCafeUser result = null;
         try {
             result = daouser.selectUser(email);
         } catch (Exception e) {
@@ -66,8 +66,8 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public List<ModelUser> selectUserList(ModelUser user) {
-        List<ModelUser> result = null;
+    public List<ModelCafeUser> selectUserList(ModelCafeUser user) {
+        List<ModelCafeUser> result = null;
         try {
             result = daouser.selectUserList(user);
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class ServiceUser implements IServiceUser {
     }
     
     @Override
-    public int updateUser(ModelUser update, ModelUser search) {
+    public int updateUser(ModelCafeUser update, ModelCafeUser search) {
         int result = 0;
         try {
             result = daouser.updateUser(update, search);
